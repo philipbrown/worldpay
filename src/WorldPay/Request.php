@@ -44,4 +44,24 @@ class Request extends AbstractWorldPay {
     $this->initialise($parameters);
   }
 
+  /**
+   * Get Default Parameters
+   *
+   * @return array
+   */
+  protected function getDefaultParameters()
+  {
+    return array('instId', 'cartId', 'currency', 'amount');
+  }
+
+  /**
+   * Get Default FuturePay Parameters
+   *
+   * @return array
+   */
+  protected function getDefaultFuturePayParameters()
+  {
+    return array('futurePayType');
+  }
+
 }
