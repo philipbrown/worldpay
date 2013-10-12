@@ -32,4 +32,11 @@ class Translate {
     return 'development';
   }
 
+  public static function unit($input)
+  {
+    $units = array('day' => 1, 'week' => 2, 'month' => 3, 'year' => 4);
+
+    return $units[rtrim($input, 's')];
+  }
+
 }

@@ -121,17 +121,6 @@ abstract class AbstractWorldPay {
   }
 
   /**
-   * Set Environment Parameter
-   *
-   * @var string $value
-   * @return void
-   */
-  protected function setEnvironmentParameter($value)
-  {
-    $this->parameters->set('testMode', Translate::setTestMode($value));
-  }
-
-  /**
    * Get Environment Parameter
    *
    * @return string
