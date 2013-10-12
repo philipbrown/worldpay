@@ -67,6 +67,33 @@ class Request extends AbstractWorldPay {
   }
 
   /**
+   * Send
+   *
+   * Send the request straight to WorldPay
+   *
+   * @return HttpRedirectResponse
+   */
+  public function send()
+  {
+    return HttpRedirectResponse::create($this->createRequest())->send();
+  }
+
+  /**
+   * Prepare
+   *
+   * Prepare the request so that it can be sent asynchronously
+   *
+   * @return array
+   */
+  public function prepare()
+  {
+    return array(
+      'endpoint'  => $this->getEndPoint(),
+      'data'      => $this->getData()
+    );
+  }
+
+  /**
    * Get Default Parameters
    *
    * @return array
@@ -104,6 +131,10 @@ class Request extends AbstractWorldPay {
       return $this->endpoints[$env];
     }
 
+    /**
+     * TO DO:
+     * Add exception environment hasn't been set correctly
+     */
     return $this->config['env']['url'];
   }
 
