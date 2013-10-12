@@ -1,6 +1,6 @@
-<?php namespace Worldpay;
+<?php namespace WorldPay;
 
-class Worldpay {
+class WorldPay {
 
   /**
    * @var array
