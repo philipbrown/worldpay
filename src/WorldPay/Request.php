@@ -220,4 +220,248 @@ class Request extends AbstractWorldPay {
     return '?signature='.$this->getSignature().'?'.http_build_query($this->getData());
   }
 
+  /**
+   * Set Description Parameter
+   *
+   * The description of this transaction for your reference
+   *
+   * @var string $value
+   * @return void
+   */
+  protected function setDescriptionParameter($value)
+  {
+    $this->parameters->set('desc', $value);
+  }
+
+  /**
+   * Set Address Line 1 Parameter
+   *
+   * @var string $value
+   * @return void
+   */
+  protected function setAddressLine1Parameter($value)
+  {
+    $this->parameters->set('address1', $value);
+  }
+
+  /**
+   * Set Address Line 2 Parameter
+   *
+   * @var string $value
+   * @return void
+   */
+  protected function setAddressLine2Parameter($value)
+  {
+    $this->parameters->set('address2', $value);
+  }
+
+  /**
+   * Set Address Line 3 Parameter
+   *
+   * @var string $value
+   * @return void
+   */
+  protected function setAddressLine3Parameter($value)
+  {
+    $this->parameters->set('address3', $value);
+  }
+
+  /**
+   * Set FuturePay Type Parameter
+   *
+   * Required for FuturePay transactions.
+   *
+   * @var string $value
+   * @return void
+   */
+  protected function setFuturePayTypeParameter($value)
+  {
+    if($value == 'limited' || $value == 'regular')
+    {
+      $this->parameters->set('futurePayType', $value);
+    }
+  }
+
+  /**
+   * Set Option Parameter
+   *
+   * Required for FuturePay transactions.
+   *
+   * @var int $value
+   * @return void
+   */
+  protected function setOptionParameter($value)
+  {
+    $this->parameters->set('option', $value);
+  }
+
+  /**
+   * Set Start Date Parameter
+   *
+   * This is the date from which all payments can occur.
+   *
+   * Required for both 'limited' and 'regular' Agreement Types.
+   * Required for all Options.
+   *
+   * The date must be set to a date in the future.
+   *
+   * Format: yyyy-mm-dd.
+   *
+   * @var string $value
+   * @return void
+   */
+  protected function setStartDateParameter($value)
+  {
+    $date = new Carbon($value);
+
+    if($date->isFuture())
+    {
+      $this->parameters->set('startDate', $date->toDateString());
+    }
+  }
+
+  /**
+   * Number of Payments Parameter
+   *
+   * Required for both 'limited' and 'regular' Agreement Types.
+   * Required for all 'regular' options and Options 1, 2 of 'limited' agreements.
+   * Leave unset for unlimited payments.
+   * Must be a positive integer.
+   *
+   * @var int $value
+   * @return void
+   */
+  protected function setNumberOfPaymentsParameter($value)
+  {
+    if($value > 0)
+    {
+      $this->parameters->set('noOfPayments', $value);
+    }
+  }
+
+  /**
+   * Set Interval Parameter
+   *
+   * The interval between payments. This method accepts a string
+   * which is then converted into the unit and multiplier.
+   *
+   * Can be set for both 'limited' and 'regular' Agreement Types.
+   *
+   * e.g '2 weeks' = intervalUnit = 2
+   *               = intervalMult = 2
+   *
+   * intervalUnit
+   * ------------
+   * Regular - Must be set except when the number of payments is 1,
+   *           in which case it cannot be set. Options 1, 2 have a
+   *           minium of 2 weeks
+   * Limited - Option 0 - Can be left unset. Must not be set if number of payments is 1
+   *           Option 1 - Must be set
+   *           Option 2 - N/A, must NOT be set
+   *           Option 3 - Must be set
+   *
+   * intervalMult
+   * ------------
+   * Regular - If set, must be >= 1
+   * Limited - Option 0 - Can be left unset. Must not be set if number of payments is 1
+   *           Option 1 - Must always be set to 1
+   *           Option 2 - Must not be set
+   *           Option 3 - Must always be set to 1
+   *
+   * @var string $value
+   * @return void
+   */
+  protected function setIntervalParameter($value)
+  {
+    $chunks = explode(' ', $value);
+
+    // if not integer throw exception
+    $this->parameters->set('intervalMult', $chunks[0]);
+    $this->parameters->set('intervalUnit', Translate::unit($chunks[1]));
+  }
+
+  /**
+   * Set Initial Amount Parameter
+   *
+   * The initial amount to charge the customer
+   *
+   * Only required for 'regular' Agreement Type
+   * If it is not set, the first payment will be for the normal amount
+   *
+   * Option 0 - Optional
+   * Option 1 - Optional
+   * Option 2 - Cannot be set
+   *
+   * @var decimal $value
+   * @return void
+   */
+  protected function setInitialAmount($value)
+  {
+    $this->parameters->set('initialAmount', $value);
+  }
+
+  /**
+   * Set Normal Amount Parameter
+   *
+   * The normal amount to charge the customer
+   *
+   * Only required for 'regular' Agreement Type
+   *
+   * Option 0 - Required
+   * Option 1 - Required
+   * Option 2 - Cannot be set. You have to set it before each payment.
+   *
+   * @var decimal $value
+   * @return void
+   */
+  protected function setNormalAmount($value)
+  {
+    $this->parameters->set('normalAmount', $value);
+  }
+
+  /**
+   * Set Amount Limit Parameter
+   *
+   * Payment amount limit
+   *
+   * Only required for 'limited' Agreement Type
+   *
+   * Option 0 - Individual payment amount limit
+   *            Leave unset for unlimited
+   * Option 1 - Individual payment amount limit
+   *            Must be set to a value greater than zero
+   * Option 2 - Agreement payment amount limit
+   *            Must be set to a value greater than zero
+   * Option 3 - Payment amount limit for interval period
+   *            Must be set to a value greater than zero
+   *
+   * @var decimal $value
+   * @return void
+   */
+  protected function setAmountLimitParameter($value)
+  {
+    $this->parameters->set('amountLimit', $value);
+  }
+
+  /**
+   * Set End Date Parameter
+   *
+   * The End date of the agreement, past which no payments are possible
+   *
+   * Only required for 'limited' Agreement Type
+   *
+   * Format: yyyy-mm-dd
+   * @var string $value
+   * @return void
+   */
+  protected function setEndDateParameter($value)
+  {
+    $date = new Carbon($value);
+
+    if($date->isFuture())
+    {
+      $this->parameters->set('endDate', $date->toDateString());
+    }
+  }
+
 }

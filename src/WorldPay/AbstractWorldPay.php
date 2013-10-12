@@ -164,4 +164,123 @@ abstract class AbstractWorldPay {
     return $this->getParameter($key);
   }
 
+  /**
+   * Set Inst Id Parameter
+   *
+   * Your WorldPay Inst Id
+   *
+   * @var string $value
+   * @return void
+   */
+  protected function setInstIdParameter($value)
+  {
+    $this->parameters->set('instId', $value);
+  }
+
+  /**
+   * Set Cart Id Parameter
+   *
+   * Merchant reference
+   *
+   * @var string $value
+   * @return void
+   */
+  protected function setCartIdParameter($value)
+  {
+    $this->parameters->set('cartId', $value);
+  }
+
+  /**
+   * Set Amount Parameter
+   *
+   * Should be set to 0 unless there is an immediate payment
+   *
+   * @var decimal $value
+   * @return void
+   */
+  protected function setAmountParameter($value)
+  {
+    $this->parameters->set('amount', $value);
+  }
+
+  /**
+   * Set Currency Parameter
+   *
+   * Currency for the amounts specified in the agreement
+   * and immediate payment if present
+   *
+   * @var string $value
+   * @return void
+   */
+  protected function setCurrencyParameter($value)
+  {
+    $this->parameters->set('currency', $value);
+  }
+
+  /**
+   * Set Name Parameter
+   *
+   * @var string $value
+   * @return void
+   */
+  protected function setNameParameter($value)
+  {
+    $this->parameters->set('name', $value);
+  }
+
+  /**
+   * Set Town Parameter
+   *
+   * @var string $value
+   * @return void
+   */
+  protected function setTownParameter($value)
+  {
+    $this->parameters->set('town', $value);
+  }
+
+  /**
+   * Set Postcode Parameter
+   *
+   * @var string $value
+   * @return void
+   */
+  protected function setPostcodeParameter($value)
+  {
+    $this->parameters->set('postcode', $value);
+  }
+
+  /**
+   * Set Country Parameter
+   *
+   * @var string $value
+   * @return void
+   */
+  protected function setCountryParameter($value)
+  {
+    $this->parameters->set('country', $value);
+  }
+
+  /**
+   * Set Email Parameter
+   *
+   * @var string $value
+   * @return void
+   */
+  protected function setEmailParameter($value)
+  {
+    $this->parameters->set('email', $value);
+  }
+
+  /**
+   * Set Environment Parameter
+   *
+   * @var string $value
+   * @return void
+   */
+  protected function setEnvironmentParameter($value)
+  {
+    $this->parameters->set('testMode', Translate::setTestMode($value));
+  }
+
 }

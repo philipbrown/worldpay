@@ -143,4 +143,391 @@ class Response extends AbstractWorldPay {
     return $this->parameters->get('timestamp');
   }
 
+  /**
+   * Get Inst Id Parameter
+   *
+   * @return string
+   */
+  protected function getInstIdParameter()
+  {
+    return $this->parameters->get('instId');
+  }
+
+  /**
+   * Get Cart Id Parameter
+   *
+   * @return string
+   */
+  protected function getCartIdParameter()
+  {
+    return $this->parameters->get('cartId');
+  }
+
+  /**
+   * Get Amount Parameter
+   *
+   * @return string
+   */
+  protected function getAmountParameter()
+  {
+    return $this->parameters->get('amount');
+  }
+
+  /**
+   * Get Currency Parameter
+   *
+   * @var string $value
+   * @return void
+   */
+  protected function getCurrencyParameter()
+  {
+    return $this->parameters->get('currency');
+  }
+
+  /**
+   * Get Description Parameter
+   *
+   * @return string
+   */
+  protected function getDescriptionParameter()
+  {
+    return $this->parameters->get('desc');
+  }
+
+  /**
+   * Get Name Parameter
+   *
+   * @return string
+   */
+  protected function getNameParameter()
+  {
+    return $this->parameters->get('name');
+  }
+
+  /**
+   * Get Town Parameter
+   *
+   * @return string
+   */
+  protected function getTownParameter()
+  {
+    return $this->parameters->get('town');
+  }
+
+  /**
+   * Get Postcode Parameter
+   *
+   * @return string
+   */
+  protected function getPostcodeParameter()
+  {
+    return $this->parameters->get('postcode');
+  }
+
+  /**
+   * Get Country Parameter
+   *
+   * @return string
+   */
+  protected function getCountryParameter()
+  {
+    return $this->parameters->get('country');
+  }
+
+  /**
+   * Get Email Paramater
+   *
+   * @return string
+   */
+  protected function getEmailParameter()
+  {
+    return $this->parameters->get('email');
+  }
+
+  /**
+   * Get Environment Parameter
+   *
+   * @return string
+   */
+  protected function getEnvironmentParameter()
+  {
+    return Translate::getTestMode($this->parameters->get('testMode'));
+  }
+
+  /**
+   * Set Test Mode Parameter
+   *
+   * @var $value string
+   * @return void
+   */
+  protected function setTestModeParameter($value)
+  {
+    $this->parameters->set('testMode', $value);
+  }
+
+  /**
+   * Set Callback Password Parameter
+   *
+   * @var string $value
+   * @return void
+   */
+  protected function setCallbackPWParameter($value)
+  {
+    $this->parameters->set('callbackPW', $value);
+  }
+
+  /**
+   * Get Password Parameter
+   *
+   * @return string
+   */
+  protected function getPasswordParameter()
+  {
+    return $this->parameters->get('callbackPw');
+  }
+
+  /**
+   * Set Transaction Status Parameter
+   *
+   * @var string $value
+   * @return void
+   */
+  protected function setTransStatusParameter($value)
+  {
+    $this->parameters->set('transStatus', $value);
+  }
+
+  /**
+   * Set Transaction Id Parameter
+   *
+   * @var string $string
+   * @return void
+   */
+  protected function setTransIdParameter($value)
+  {
+    $this->parameters->set('transId', $value);
+  }
+
+  /**
+   * Get Transaction Id Parameter
+   *
+   * @return string
+   */
+  protected function getTransactionIdParameter()
+  {
+    return $this->parameters->get('transId');
+  }
+
+  /**
+   * Set Card Type Parameter
+   *
+   * @var string $value
+   * @return void
+   */
+  protected function setCardTypeParameter($value)
+  {
+    $this->parameters->set('cardType', $value);
+  }
+
+  /**
+   * Get Card Type Parameter
+   *
+   * @var string $value
+   * @return void
+   */
+  protected function getCardTypeParameter()
+  {
+    return $this->parameters->get('cardType', $value);
+  }
+
+  /**
+   * Set IP Address Parameter
+   *
+   * @var string $value
+   * @return void
+   */
+  protected function setIpAddressParameter($value)
+  {
+    $this->parameters->set('ipAddress', $value);
+  }
+
+  /**
+   * Get IP Address Parameter
+   *
+   * @return string
+   */
+  protected function getIpAddressParameter()
+  {
+    return $this->parameters->get('ipAddress');
+  }
+
+  /**
+   * Set Company Name Parameter
+   *
+   * @var string $value
+   * @return void
+   */
+  protected function setCompNameParameter($value)
+  {
+    $this->parameters->set('compName', $value);
+  }
+
+  /**
+   * Get Company Name Parameter
+   *
+   * @return string
+   */
+  protected function getCompanyNameParameter()
+  {
+    return $this->parameters->get('compName');
+  }
+
+  /**
+   * Set FuturePay Id Parameter
+   *
+   * @var string $value
+   * @return void
+   */
+  protected function setFuturePayIdParameter($value)
+  {
+    $this->parameters->set('futurePayId', $value);
+  }
+
+  /**
+   * Get FuturePay Id Parameter
+   *
+   * @return void
+   */
+  protected function getFuturePayIdParameter()
+  {
+    return $this->parameters->get('futurePayId');
+  }
+
+  /**
+   * Set Address Line 1 Parameter
+   *
+   * @var string $value
+   * @return void
+   */
+  protected function setAddress1Parameter($value)
+  {
+    $this->parameters->set('address1', $value);
+  }
+
+  /**
+   * Set Address Line 2 Parameter
+   *
+   * @var string $value
+   * @return void
+   */
+  protected function setAddress2Parameter($value)
+  {
+    $this->parameters->set('address2', $value);
+  }
+
+  /**
+   * Set Address Line 3 Parameter
+   *
+   * @var string $value
+   * @return void
+   */
+  protected function setAddress3Parameter($value)
+  {
+    $this->parameters->set('address3', $value);
+  }
+
+  /**
+   * Get Address Line 1 Parameter
+   *
+   * @return string
+   */
+  protected function getAddressLine1Parameter()
+  {
+    return $this->parameters->get('address1');
+  }
+
+  /**
+   * Get Address Line 2 Parameter
+   *
+   * @return string
+   */
+  protected function getAddressLine2Parameter()
+  {
+    return $this->parameters->get('address2');
+  }
+
+  /**
+   * Get Address Line 3 Parameter
+   *
+   * @return string
+   */
+  protected function getAddressLine3Parameter()
+  {
+    return $this->parameters->get('address3');
+  }
+
+  /**
+   * Set Telephone Parameter
+   *
+   * @var string $value
+   * @return void
+   */
+  protected function setTelParameter($value)
+  {
+    $this->parameters->set('tel', $value);
+  }
+
+  /**
+   * Set Fax Parameter
+   *
+   * @var string $value
+   * @return void
+   */
+  protected function setFaxParameter($value)
+  {
+    $this->parameters->set('fax', $value);
+  }
+
+  /**
+   * Get Fax Parameter
+   *
+   * @return string
+   */
+  protected function getFaxParameter()
+  {
+    return $this->parameters->get('fax');
+  }
+
+  /**
+   * Set Country String Parameter
+   *
+   * @var string $value
+   * @return void
+   */
+  protected function setCountryStringParameter($value)
+  {
+    $this->parameters->set('countryString', $value);
+  }
+
+  /**
+   * Get Country String Parameter
+   *
+   * @return string
+   */
+  protected function getCountryStringParameter()
+  {
+    return $this->parameters->get('countryString');
+  }
+
+  /**
+   * Set Desc Parameter
+   *
+   * @var $value string
+   * @return void
+   */
+  protected function setDescParameter($value)
+  {
+    $this->parameters->set('desc', $value);
+  }
+
 }
