@@ -64,4 +64,25 @@ class Request extends AbstractWorldPay {
     return array('futurePayType');
   }
 
+  /**
+   * Get Endpoint
+   *
+   * Returns the correct endpoint based on the environement
+   * If a custom environment is set, the request URL must be
+   * set in the configuration array.
+   *
+   * @return string
+   */
+  protected function getEndpoint()
+  {
+    $env = ($this->config['env']) ? $this->config['env'] : 'development';
+
+    if($env == 'production' || $env == 'development')
+    {
+      return $this->endpoints[$env];
+    }
+
+    return $this->config['env']['url'];
+  }
+
 }
