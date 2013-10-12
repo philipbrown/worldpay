@@ -1,4 +1,1 @@
-worldpay
-========
-
-A PHP wrapper for WorldPay
+#WorldPay
