@@ -221,6 +221,17 @@ class Request extends AbstractWorldPay {
   }
 
   /**
+   * Set Environment Parameter
+   *
+   * @var string $value
+   * @return void
+   */
+  protected function setEnvironmentParameter($value)
+  {
+    $this->parameters->set('testMode', Translate::setTestMode($value));
+  }
+
+  /**
    * Set Description Parameter
    *
    * The description of this transaction for your reference
@@ -264,6 +275,17 @@ class Request extends AbstractWorldPay {
   protected function setAddressLine3Parameter($value)
   {
     $this->parameters->set('address3', $value);
+  }
+
+  /**
+   * Set Telephone Parameter
+   *
+   * @var string $value
+   * @return void
+   */
+  public function setTelephoneParameter($value)
+  {
+    $this->parameters->set('telephone', $telephone);
   }
 
   /**

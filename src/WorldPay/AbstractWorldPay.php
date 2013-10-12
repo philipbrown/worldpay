@@ -142,29 +142,6 @@ abstract class AbstractWorldPay {
   }
 
   /**
-   * Dynamically set attributes on the object
-   *
-   * @var string $key
-   * @var string $value
-   * @return void
-   */
-  public function __set($key, $value)
-  {
-    $this->setParameter($key, $value);
-  }
-
-  /**
-   * Dynamically get attributes on the object
-   *
-   * @var string $key
-   * @return string
-   */
-  public function __get($key)
-  {
-    return $this->getParameter($key);
-  }
-
-  /**
    * Set Inst Id Parameter
    *
    * Your WorldPay Inst Id
@@ -273,14 +250,26 @@ abstract class AbstractWorldPay {
   }
 
   /**
-   * Set Environment Parameter
+   * Dynamically set attributes on the object
    *
+   * @var string $key
    * @var string $value
    * @return void
    */
-  protected function setEnvironmentParameter($value)
+  public function __set($key, $value)
   {
-    $this->parameters->set('testMode', Translate::setTestMode($value));
+    $this->setParameter($key, $value);
+  }
+
+  /**
+   * Dynamically get attributes on the object
+   *
+   * @var string $key
+   * @return string
+   */
+  public function __get($key)
+  {
+    return $this->getParameter($key);
   }
 
 }
