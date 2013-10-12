@@ -198,4 +198,26 @@ class Request extends AbstractWorldPay {
     return md5($this->secret.':'.implode(':', $fields));
   }
 
+  /**
+   * Get Query String
+   *
+   * @return string
+   */
+  protected function getQueryString()
+  {
+    return '?signature='.$this->getSignature().'?'.http_build_query($this->getData());
+  }
+
+  /**
+   * Create Request
+   *
+   * Concatenate the endpoint and the data to send
+   *
+   * @return string
+   */
+  protected function createRequest()
+  {
+    return $this->getEndpoint().$this->getQueryString();
+  }
+
 }
