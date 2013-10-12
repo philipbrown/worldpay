@@ -65,6 +65,28 @@ class Request extends AbstractWorldPay {
   }
 
   /**
+   * Set Secret
+   *
+   * @var string $secret
+   * @return void
+   */
+  public function setSecret($secret)
+  {
+    $this->secret = $secret;
+  }
+
+  /**
+   * Set Signature Fields
+   *
+   * @var array $fields
+   * @return void
+   */
+  public function setSignatureFields($fields)
+  {
+    $this->fields = $fields;
+  }
+
+  /**
    * Get Endpoint
    *
    * Returns the correct endpoint based on the environement
