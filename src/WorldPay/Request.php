@@ -45,26 +45,6 @@ class Request extends AbstractWorldPay {
   }
 
   /**
-   * Get Default Parameters
-   *
-   * @return array
-   */
-  protected function getDefaultParameters()
-  {
-    return array('instId', 'cartId', 'currency', 'amount');
-  }
-
-  /**
-   * Get Default FuturePay Parameters
-   *
-   * @return array
-   */
-  protected function getDefaultFuturePayParameters()
-  {
-    return array('futurePayType');
-  }
-
-  /**
    * Set Secret
    *
    * @var string $secret
@@ -84,6 +64,26 @@ class Request extends AbstractWorldPay {
   public function setSignatureFields($fields)
   {
     $this->fields = $fields;
+  }
+
+  /**
+   * Get Default Parameters
+   *
+   * @return array
+   */
+  protected function getDefaultParameters()
+  {
+    return array('instId', 'cartId', 'currency', 'amount');
+  }
+
+  /**
+   * Get Default FuturePay Parameters
+   *
+   * @return array
+   */
+  protected function getDefaultFuturePayParameters()
+  {
+    return array('futurePayType');
   }
 
   /**
