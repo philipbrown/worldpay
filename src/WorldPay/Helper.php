@@ -26,6 +26,7 @@ class Helper {
    *
    * @var string $type ('get'|'set')
    * @var string $key
+   * @return string
    */
   public static function convertParamMethodName($type = 'get', $key)
   {
