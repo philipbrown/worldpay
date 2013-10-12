@@ -138,4 +138,64 @@ class Request extends AbstractWorldPay {
     return $this->config['env']['url'];
   }
 
+  /**
+   * Get Data
+   *
+   * Return all the parameters from the ParameterBag
+   *
+   * @return array
+   */
+  protected function getData()
+  {
+    return $this->parameters->all();
+  }
+
+  /**
+   * Get Signature Fields
+   *
+   * @return array
+   */
+  protected function getSignatureFields()
+  {
+    $fields = ($this->fields) ? $this->fields : array();
+
+    $default = array_merge($this->getDefaultParameters(), $fields);
+
+    if($this->parameters->has('futurePayType'))
+    {
+      return array_merge($default, $this->getDefaultFuturePayParameters());
+    }
+
+    return $default;
+  }
+
+  /**
+   * Get Signature Fields Data
+   *
+   * @var array $fields
+   * @var array $data
+   * @return array
+   */
+  protected function getSignatureFieldsData($fields, $data)
+  {
+    foreach($fields as $field)
+    {
+      $signature[$field] = $data[$field];
+    }
+
+    return $signature;
+  }
+
+  /**
+   * Get Signature
+   *
+   * @return string
+   */
+  protected function getSignature()
+  {
+    $fields = $this->getSignatureFieldsData($this->getSignatureFields(), $this->getData());
+
+    return md5($this->secret.':'.implode(':', $fields));
+  }
+
 }
