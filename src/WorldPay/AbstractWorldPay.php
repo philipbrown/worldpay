@@ -18,6 +18,27 @@ abstract class AbstractWorldPay {
   }
 
   /**
+   * Initialise the object with parameters
+   *
+   * Set the default parameters first and then set the
+   * user given parameters second to allow for overrides
+   *
+   * @var $properties array
+   */
+  public function initialise($parameters)
+  {
+    foreach($this->getDefaultParameters() as $param)
+    {
+      $this->setParameter($param, null);
+    }
+
+    foreach($parameters as $key => $value)
+    {
+      $this->setParameter($key, $value);
+    }
+  }
+
+  /**
    * Determines if this key has a setter or getter method
    *
    * @var string $type ('get'|'set')
@@ -121,34 +142,26 @@ abstract class AbstractWorldPay {
   }
 
   /**
-   * Get Environment Parameter
+   * Dynamically set attributes on the object
    *
-   * @return string
+   * @var string $key
+   * @var string $value
+   * @return void
    */
-  protected function getEnvironmentParameter()
+  public function __set($key, $value)
   {
-    return Translate::getTestMode($this->parameters->get('testMode'));
+    $this->setParameter($key, $value);
   }
 
   /**
-   * Initialise the object with parameters
+   * Dynamically get attributes on the object
    *
-   * Set the default parameters first and then set the
-   * user given parameters second to allow for overrides
-   *
-   * @var $properties array
+   * @var string $key
+   * @return string
    */
-  public function initialise($parameters)
+  public function __get($key)
   {
-    foreach($this->getDefaultParameters() as $param)
-    {
-      $this->setParameter($param, null);
-    }
-
-    foreach($parameters as $key => $value)
-    {
-      $this->setParameter($key, $value);
-    }
+    return $this->getParameter($key);
   }
 
 }
