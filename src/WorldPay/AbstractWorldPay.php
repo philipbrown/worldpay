@@ -141,4 +141,25 @@ abstract class AbstractWorldPay {
     return Translate::getTestMode($this->parameters->get('testMode'));
   }
 
+  /**
+   * Initialise the object with parameters
+   *
+   * Set the default parameters first and then set the
+   * user given parameters second to allow for overrides
+   *
+   * @var $properties array
+   */
+  public function initialise($parameters)
+  {
+    foreach($this->getDefaultParameters() as $param)
+    {
+      $this->setParameter($param, null);
+    }
+
+    foreach($parameters as $key => $value)
+    {
+      $this->setParameter($key, $value);
+    }
+  }
+
 }
