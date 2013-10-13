@@ -159,10 +159,11 @@ WorldPay allows you to include custom parameters in your request which will be a
 To set a custom parameter, simply prepend it with wither ```MC_``` or ```CM_```.
 ```php
 array(
-  'MC_order_id' => 432,
+  'CM_order_id' => 432,
   'MC_customer_id' => '34'
 );
 ```
+There is actually no difference between ```MC_``` and ```CM_``` parameters. WorldPay also allows you to supply either ```C_``` or ```M_``` parameters which are only available in your result pages or you callback script respectively. However, I have left them out of this package for simplicity. If you really need access to these parameters, open an issue and I'll add support for them too.
 
 ##Setting a Secret
 To prevent unauthorised tampering of transaction requests, WorldPay allows you to set a secret key. This key is then used as part of the encryption of the transaction signature that you must send to WorldPay for each request.
