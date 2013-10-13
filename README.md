@@ -88,3 +88,16 @@ $wp->setConfig(array(
   'env' => 'local'
   'local' => 'example.local/callbacks/worldpay'
 ));
+```
+
+##Setting a secret
+To prevent unauthorised tampering of transaction requests, WorldPay allows you to set a secret key. This key is then used as part of the encryption of the transaction signature that you must send to WorldPay for each request.
+
+To set a secret, go into your WorldPay Account and choose **Installations** from the menu.
+
+Next choose your installation and complete the field marked **MD5 secret for transactions**.
+
+When using the WorldPay package, simply set your secret using the ```setSecret``` method:
+```php
+$wp->setSecret('my_secret');
+```
