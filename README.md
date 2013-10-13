@@ -90,7 +90,7 @@ $wp->setConfig(array(
 ));
 ```
 
-##Setting a secret
+##Setting a Secret
 To prevent unauthorised tampering of transaction requests, WorldPay allows you to set a secret key. This key is then used as part of the encryption of the transaction signature that you must send to WorldPay for each request.
 
 To set a secret, go into your WorldPay Account and choose **Installations** from the menu.
@@ -99,5 +99,24 @@ Next choose your installation and complete the field marked **MD5 secret for tra
 
 When using the WorldPay package, simply set your secret using the ```setSecret``` method:
 ```php
-$wp->setSecret('my_secret');
+$request->setSecret('my_secret');
 ```
+
+##Setting the Signature Fields
+The Signature Fields are a colon separated string that is used by WorldPay to authorise requests.
+
+The signature follows this following format: ```secret:field_1:field_2:field_3```
+
+The string is then hashed using the **MD5 hashing algorithm**.
+
+When WorldPay recieves your transaction request, the transaction parameters are checked against the signature to ensure that nothing has been tampered with. **It is therefore important** that you ensure that all sensitive fields are included in your signature.
+
+To specify which fields will be included in your signature, go into your WorldPay account, choose **Installations** from the menu and then choose the installation you are working. Complete the field marked **SignatureFields** with a colon seperated list.
+
+By default, this WorldPay package will force you to use the default parameters of ```instId```, ```cartId```, ```currency```, ```amount```.
+
+You can add your own fields by using the ```setSignatureFields``` method:
+```
+$request->setSignatureFields(array('email', 'payment_type'));
+```
+
