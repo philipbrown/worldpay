@@ -265,4 +265,50 @@ $response->address_line_1;  // '101 Blah Lane'
 $response->telephone;       // '123456789'
 $response->fax;             // '123456789'
 $response->country_string;  // 'United Kingdom'
+$response->timestamp;       // '2013-10-13 16:42:11'
+```
+
+###Response helper methods
+There are a number of helper methods on the ```Response``` object to make working withh the response easier:
+
+#### Is Valid?
+WorldPay allows you to set a callback password to ensure only authorised ```POST``` requests are accessed by your callback script.
+
+To set your callback password, go into your WorldPay account, choose the correct installation and enter your chosen password into the required field.
+
+WorldPay will send that password as part of the ```POST``` request.
+
+You can use the ```isValid``` method to check that this is an authorised request:
+```php
+$response->isValid(); // TRUE / FALSE
+```
+
+#### Is Success?
+WorldPay will send you a callback request if the payment was either successful or if the customer decided to cancel the request. To check to see if this transaction was successful, use the ```isSuccess``` method:
+```php
+$response->isSuccess(); // TRUE / FALSE
+```
+
+#### Is Cancelled?
+You can check to see if the transaction was cancelled by the customer with the ```isCancelled``` method:
+```php
+$response->isCancelled(); // TRUE / FALSE
+```
+
+#### Is FuturePay?
+To check to see if this was a FuturePay transaction, you can use the ```isFuturePay``` method:
+```php
+$response->isFuturePay(); // TRUE / FALSE
+```
+
+#### Is Production?
+To check to see if this was a live transaction, you can use the ```isProduction``` method:
+```php
+$response->isProduction(); // TRUE / FALSE
+```
+
+#### Is Development?
+Alternatively, to check to see if this was a development transaction, you can use the ```isDevelopment``` method:
+```php
+$response->isDevelopment(); // TRUE / FALSE
 ```
