@@ -151,7 +151,7 @@ The customer's telephone number.
 ```payment_type``` **Optional**
 The customer's chosen payment type.
 
-By setting the ```payment_type``` parameter you can bypass this screen when the customer hits the WorldPay servers.
+By setting the ```payment_type``` parameter you can bypass the payment selection screen when the customer hits the WorldPay servers.
 
 ##Setting a Secret
 To prevent unauthorised tampering of transaction requests, WorldPay allows you to set a secret key. This key is then used as part of the encryption of the transaction signature that you must send to WorldPay for each request.
