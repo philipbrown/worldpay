@@ -42,4 +42,10 @@ class RequestTest extends TestCase {
     $this->assertEquals(md5('my_secret:123456789:my_shop:GBP:99.99:phil@ipbrown.com'), $r['signature']);
   }
 
+  public function testNormalRequestSend()
+  {
+    $wp = $this->getWorldpay();
+    $this->assertInstanceOf('Symfony\Component\HttpFoundation\RedirectResponse', $wp->request($this->getNormalRequest())->send());
+  }
+
 }
