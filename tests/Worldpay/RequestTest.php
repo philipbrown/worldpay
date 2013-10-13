@@ -21,4 +21,23 @@ class RequestTest extends TestCase {
     $this->assertEquals('123456789', $r['data']['telephone']);
   }
 
+  public function testSignature()
+  {
+    $wp = $this->getWorldpay();
+    $request = $wp->request($this->getNormalRequest());
+    $request->setSecret('my_secret');
+    $r = $request->prepare();
+    $this->assertEquals(md5('my_secret:123456789:my_shop:GBP:99.99'), $r['signature']);
+  }
+
+  public function testSignatureWithCustomFields()
+  {
+    $wp = $this->getWorldpay();
+    $request = $wp->request($this->getNormalRequest());
+    $request->setSecret('my_secret');
+    $request->setSignatureFields(array('email'));
+    $r = $request->prepare();
+    $this->assertEquals(md5('my_secret:123456789:my_shop:GBP:99.99:phil@ipbrown.com'), $r['signature']);
+  }
+
 }
