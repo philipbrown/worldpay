@@ -9,4 +9,7 @@ $wp = new Worldpay\Worldpay;
 $wp->setConfig(array('env' => 'development'));
 
 // Set your secret
-$wp->setSecret('my_secret');
+$request->setSecret('my_secret');
+
+// Set custom signature fields
+$request->setSignatureFields(array('email'))
