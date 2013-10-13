@@ -182,3 +182,33 @@ You can add your own fields by using the ```setSignatureFields``` method:
 ```php
 $request->setSignatureFields(array('email'));
 ```
+
+##Sending requests to WorldPay
+You can either send your requests to WorldPay synchronously or asynchronously.
+
+To send a request synchronously, use the ```send``` method:
+```php
+$request->send();
+```
+This allows you to create the request and send it in one page request.
+
+If you want to provide a customer confirmation page, you can use the ```prepare``` method to grab a copy of the request data. You can then create a hidden form so that the customer can confirm the transaction before sending it to WorldPay:
+```php
+$worldpay = $request->prepare();
+```
+
+```html
+<h1>Confirm your purchase</h1>
+
+<p>Thank you {$customer->first_name} for choosing to buy with us.</p>
+<p>To confirm your purchase click the button below.</p>
+<p>You will be taken to WorldPay's secure server where you can complete your transaction.</p>
+
+<form action="{$worldpay['endpoint']}" method="POST">
+  {foreach $worldpay['data'] as $key => $value}
+    <input type="hidden" name="{$key}" value="{$value}">
+  {endforeach}
+  <input type="hidden" name="signature" value="{$worldpay['signature']}">
+  <input type="submit" value="Complete your purchase!">
+</form>
+```
