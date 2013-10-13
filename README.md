@@ -9,15 +9,6 @@ I decided to make this package to abstract a lot of these complications away and
 
 **Note** If you are looking to integrate many payment gateways into your application, and you aren't going to be using all of WorldPay's features (e.g FuturePay or custom parameters) you should probably use [Omnipay](https://github.com/adrianmacneil/omnipay) instead.
 
-##How does WorldPay work?
-Creating a new payment using the WorldPay gateway basically follows these three steps:
-
-1. You create a **Request** with information about the transaction. This could be as little as simply the amount of the transaction all the way up to a complete profile of your customer.
-2. The customer is redirected to WorldPay's secure servers to enter their payment details. No customer details are ever stored on your server.
-3. WorldPay will then send an optional **Response** back to your server as a callback. You can use this callback to update your database or set any processes you need to run post transaction.
-
-This WorldPay package allows you to easily create a new **Request** and capture the resulting **Response**
-
 ##Installation
 Add `philipbrown/worldpay` as a requirement to `composer.json`:
 
@@ -29,13 +20,22 @@ Add `philipbrown/worldpay` as a requirement to `composer.json`:
 }
 ```
 
+##How does WorldPay work?
+Creating a new payment using the WorldPay gateway basically follows these three steps:
+
+1. You create a **Request** with information about the transaction. This could be as little as simply the amount of the transaction all the way up to a complete profile of your customer.
+2. The customer is redirected to WorldPay's secure servers to enter their payment details. No customer details are ever stored on your server.
+3. WorldPay will then send an optional **Response** back to your server as a callback. You can use this callback to update your database or set any processes you need to run post transaction.
+
+This WorldPay package allows you to easily create a new **Request** and capture the resulting **Response**
+
 Update your packages with `composer update`.
 
-##Creating a Request
+###Creating a Request
 Creating a new request is as simple as instantiating a new ```Request``` object and passing it your transaction details.
 ```php
 // Get a new WorldPay object
-$wp = new Worldpay\Worldpay;
+$wp = new WorldPay\WorldPay;
 
 // Create a Request
 $request = $wp->request(array(
@@ -47,4 +47,17 @@ $request = $wp->request(array(
 
 // Send it to WorldPay
 $request->send();
+```
+
+###Accepting a Response
+WorldPay will send a ```POST``` request to your server with details of the transaction. You simply need to capture this request and pass it to the ```Response``` object.
+```php
+// Get a new WorldPay object
+$wp = new WorldPay\WorldPay;
+
+// Pass the $_POST to the Response object
+$response = $wp->response($_POST);
+
+// You now have an easy to work with object
+$response->isSuccess(); // Returns TRUE / FALSE
 ```
