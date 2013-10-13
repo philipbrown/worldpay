@@ -17,3 +17,16 @@ Creating a new payment using the WorldPay gateway basically follows these three 
 3. WorldPay will then send an optional **Response** back to your server as a callback. You can use this callback to update your database or set any processes you need to run post transaction.
 
 This WorldPay package allows you to easily create a new **Request** and capture the resulting **Response**
+
+##Installation
+Add `philipbrown/worldpay` as a requirement to `composer.json`:
+
+```json
+{
+  "require": {
+    "philipbrown/worldpay": "dev-master"
+  }
+}
+```
+
+Update your packages with `composer update`.
