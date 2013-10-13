@@ -30,3 +30,21 @@ Add `philipbrown/worldpay` as a requirement to `composer.json`:
 ```
 
 Update your packages with `composer update`.
+
+##Creating a Request
+Creating a new request is as simple as instantiating a new ```Request``` object and passing it your transaction details.
+```php
+// Get a new WorldPay object
+$wp = new Worldpay\Worldpay;
+
+// Create a Request
+$request = $wp->request(array(
+  'instId' => '123456',
+  'cartId' => 'my_shop',
+  'currency' => 'GBP',
+  'amount' => 9.99,
+));
+
+// Send it to WorldPay
+$request->send();
+```
