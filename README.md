@@ -110,6 +110,49 @@ $request = $wp->request(array(
 ));
 ```
 
+### Request Parameters
+```instId``` **Required**
+The installation id is used to match this request to your specific installation.
+
+```cartId``` **Required**
+The cart id is used as a reference for where the transaction originated.
+
+```currency``` **Required**
+The currency shortcode of this transaction.
+
+```amount``` **Required**
+The total amount of this transaction.
+
+```environment``` **Required**
+The environment of this transaction. This will default to ```development``` if not supplied.
+
+```name``` **Optional**
+The name of the customer
+
+```email``` **Optional**
+The email address of the customer
+
+```address_line_1``` **Optional**
+The first line of the customer's address.
+
+You can also optionally specify the ```address_line_2``` and ```address_line_3``` parameters.
+
+```town``` **Optional**
+The customer's town.
+
+```country``` **Optional**
+The customer's country.
+
+The country should be provided as a specific shortcode.
+
+```telephone``` **Optional**
+The customer's telephone number.
+
+```payment_type``` **Optional**
+The customer's chosen payment type.
+
+By setting the ```payment_type``` parameter you can bypass the payment selection screen when the customer hits the WorldPay servers.
+
 ##Setting a Secret
 To prevent unauthorised tampering of transaction requests, WorldPay allows you to set a secret key. This key is then used as part of the encryption of the transaction signature that you must send to WorldPay for each request.
 
