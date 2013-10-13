@@ -283,9 +283,9 @@ class Request extends AbstractWorldpay {
    * @var string $value
    * @return void
    */
-  public function setTelephoneParameter($value)
+  protected function setTelephoneParameter($value)
   {
-    $this->parameters->set('telephone', $telephone);
+    $this->parameters->set('telephone', $value);
   }
 
   /**
