@@ -108,7 +108,8 @@ class Request extends AbstractWorldpay {
   {
     return array(
       'endpoint'  => $this->getEndPoint(),
-      'data'      => $this->getData()
+      'data'      => $this->getData(),
+      'signature' => $this->getSignature()
     );
   }
 
