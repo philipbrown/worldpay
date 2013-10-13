@@ -224,3 +224,23 @@ $worldpay = $request->prepare();
   <input type="submit" value="Complete your purchase!">
 </form>
 ```
+
+## FuturePay
+...urgh I'll come back to this...
+
+##Capturing a WorldPay response
+A WorldPay response is simply a ```POST``` request to a URL that you define in your WorldPay account.
+
+To set your callback URL, log in to your WorldPay account, choose the installation and complete the field marked **Payment Response URL**. Also make sure you have **Payment Response enabled?** checked.
+
+To capture a response, simply pass the ```POST``` request to the ```response``` method:
+```php
+// Get a new WorldPay object
+$wp = new Worldpay\Worldpay;
+
+// Pass the $_POST to the Response object
+$response = $wp->response($_POST);
+```
+
+##Response parameters
+Once you have captured the WorldPay resonse, all of the parameters are available to your on the ```Response``` object:
