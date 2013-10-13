@@ -84,7 +84,7 @@ class Response extends AbstractWorldpay {
    */
   public function isSuccess()
   {
-    return $this->getTransStatusParameter() == 'Y';
+    return $this->getTransactionStatusParameter() == 'Y';
   }
 
   /**
@@ -96,7 +96,7 @@ class Response extends AbstractWorldpay {
    */
   public function isCancelled()
   {
-    return $this->getTransStatusParameter() == 'C';
+    return $this->getTransactionStatusParameter() == 'C';
   }
 
   /**
@@ -422,6 +422,16 @@ class Response extends AbstractWorldpay {
   }
 
   /**
+   * Get Test Mode Parameter
+   *
+   * @return string
+   */
+  protected function getTestModeParameter()
+  {
+    return $this->parameters->get('testMode');
+  }
+
+  /**
    * Get Password Parameter
    *
    * @return string
@@ -439,6 +449,16 @@ class Response extends AbstractWorldpay {
   protected function getTransactionIdParameter()
   {
     return $this->parameters->get('transId');
+  }
+
+  /**
+   * Get Transaction Status Parameter
+   *
+   * @return string
+   */
+  protected function getTransactionStatusParameter()
+  {
+    return $this->parameters->get('transStatus');
   }
 
   /**
