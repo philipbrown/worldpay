@@ -26,7 +26,9 @@ class TestCase extends PHPUnit_Framework_TestCase {
       'country' => 'GB',
       'telephone' => '123456789',
       'payment_type' => 'VISA',
-      'amount' => '99.99'
+      'amount' => '99.99',
+      'MC_order_id' => 456,
+      'MC_customer_id' => 123
     );
   }
 
