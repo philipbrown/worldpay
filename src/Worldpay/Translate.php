@@ -32,6 +32,14 @@ class Translate {
     return 'development';
   }
 
+  /**
+   * Unit
+   *
+   * Convert interval string into correct WorldPay parameter
+   *
+   * @var $input string
+   * @return integer
+   */
   public static function unit($input)
   {
     $units = array('day' => 1, 'week' => 2, 'month' => 3, 'year' => 4);
