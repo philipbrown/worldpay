@@ -117,6 +117,6 @@ By default, this WorldPay package will force you to use the default parameters o
 
 You can add your own fields by using the ```setSignatureFields``` method:
 ```
-$request->setSignatureFields(array('email', 'payment_type'));
+$request->setSignatureFields(array('email'));
 ```
 
