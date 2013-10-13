@@ -428,7 +428,7 @@ class Response extends AbstractWorldpay {
    */
   protected function getPasswordParameter()
   {
-    return $this->parameters->get('callbackPw');
+    return $this->parameters->get('callbackPW');
   }
 
   /**
