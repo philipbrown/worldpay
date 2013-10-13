@@ -1,4 +1,4 @@
-<?php namespace WorldPay;
+<?php namespace Worldpay;
 
 class Helper {
 

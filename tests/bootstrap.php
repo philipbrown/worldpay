@@ -4,6 +4,6 @@
 $autoloader = require __DIR__.'/../vendor/autoload.php';
 
 // Add WorldPay
-$autoloader->add('WorldPay', __DIR__);
+$autoloader->add('Worldpay', __DIR__);
 
 ?>

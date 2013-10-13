@@ -1,4 +1,4 @@
-<?php namespace WorldPay;
+<?php namespace Worldpay;
 
 use PHPUnit_Framework_TestCase;
 

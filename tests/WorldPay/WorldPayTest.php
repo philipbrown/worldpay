@@ -1,3 +1,3 @@
-<?php namespace WorldPay;
+<?php namespace Worldpay;
 
-class WorldPayTest extends TestCase {}
+class WorldpayTest extends TestCase {}

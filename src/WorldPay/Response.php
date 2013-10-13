@@ -1,6 +1,6 @@
-<?php namespace WorldPay;
+<?php namespace Worldpay;
 
-class Response extends AbstractWorldPay {
+class Response extends AbstractWorldpay {
 
   /**
    * @var array

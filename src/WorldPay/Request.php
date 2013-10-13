@@ -1,9 +1,9 @@
-<?php namespace WorldPay;
+<?php namespace Worldpay;
 
 use Carbon\Carbon;
 use Symfony\Component\HttpFoundation\RedirectResponse as HttpRedirectResponse;
 
-class Request extends AbstractWorldPay {
+class Request extends AbstractWorldpay {
 
   /**
    * @var array

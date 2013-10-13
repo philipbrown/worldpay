@@ -35,7 +35,7 @@ Update your packages with `composer update`.
 Creating a new request is as simple as instantiating a new ```Request``` object and passing it your transaction details.
 ```php
 // Get a new WorldPay object
-$wp = new WorldPay\WorldPay;
+$wp = new Worldpay\Worldpay;
 
 // Create a Request
 $request = $wp->request(array(
@@ -53,7 +53,7 @@ $request->send();
 WorldPay will send a ```POST``` request to your server with details of the transaction. You simply need to capture this request and pass it to the ```Response``` object.
 ```php
 // Get a new WorldPay object
-$wp = new WorldPay\WorldPay;
+$wp = new Worldpay\Worldpay;
 
 // Pass the $_POST to the Response object
 $response = $wp->response($_POST);
