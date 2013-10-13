@@ -153,6 +153,17 @@ The customer's chosen payment type.
 
 By setting the ```payment_type``` parameter you can bypass the payment selection screen when the customer hits the WorldPay servers.
 
+##Custom Parameters
+WorldPay allows you to include custom parameters in your request which will be available to you when you receive the response. This is useful for when you need to match up a response with a record in your database.
+
+To set a custom parameter, simply prepend it with wither ```MC_``` or ```CM_```.
+```php
+array(
+  'MC_order_id' => 432,
+  'MC_customer_id' => '34'
+);
+```
+
 ##Setting a Secret
 To prevent unauthorised tampering of transaction requests, WorldPay allows you to set a secret key. This key is then used as part of the encryption of the transaction signature that you must send to WorldPay for each request.
 
