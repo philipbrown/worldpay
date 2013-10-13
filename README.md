@@ -245,63 +245,24 @@ $response = $wp->response($_POST);
 ##Response parameters
 Once you have captured the WorldPay resonse, all of the parameters are available to your on the ```Response``` object:
 ```php
-// '123456'
-$response->instId;
-
-// 'My Shop'
-$response->cartId;
-
-// '9.99'
-$response->amount;
-
-// 'GBP'
-$response->currency;
-
-// 'The name of my product'
-$response->description;
-
-// 'Philip Brown'
-$response->name;
-
-// 'London'
-$response->town;
-
-// 'E20 123'
-$response->postcode;
-
-// 'GB'
-$response->country;
-
-// 'phil@ipbrown.com'
-$response->email;
-
-// 'development'
-$response->environment;
-
-// 'password_123'
-$response->password;
-
-// '123456789'
-$response->transaction_id;
-
-// 'MasterCard'
-$response->card_type;
-
-// '123.456.789'
-$response->ip_address;
-
-// 'Acme PHP Ltd'
-$response->company_name;
-
-// '101 Blah Lane'
-$response->address_line_1;
-
-// '123456789'
-$response->telephone;
-
-// '123456789'
-$response->fax;
-
-// 'United Kingdom'
-$response->country_string;
+$response->instId;          // '123456'
+$response->cartId;          // 'My Shop'
+$response->amount;          // '9.99'
+$response->currency;        // 'GBP'
+$response->description;     // 'The name of my product'
+$response->name;            // 'Philip Brown'
+$response->town;            // 'London'
+$response->postcode;        // 'E20 123'
+$response->country;         // 'GB'
+$response->email;           // 'phil@ipbrown.com'
+$response->environment;     // 'development'
+$response->password;        // 'password_123'
+$response->transaction_id;  // '123456789'
+$response->card_type;       // 'MasterCard'
+$response->ip_address;      // '123.456.789'
+$response->company_name;    // 'Acme PHP Ltd'
+$response->address_line_1;  // '101 Blah Lane'
+$response->telephone;       // '123456789'
+$response->fax;             // '123456789'
+$response->country_string;  // 'United Kingdom'
 ```
