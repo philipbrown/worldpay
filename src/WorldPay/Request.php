@@ -207,7 +207,7 @@ class Request extends AbstractWorldpay {
      * TO DO:
      * Add exception environment hasn't been set correctly
      */
-    return $this->config['env']['url'];
+    return $this->config[$env]['url'];
   }
 
   /**
