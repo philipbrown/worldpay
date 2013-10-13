@@ -242,14 +242,14 @@ $wp = new Worldpay\Worldpay;
 $response = $wp->response($_POST);
 ```
 
-##Response parameters
+###Response parameters
 Once you have captured the WorldPay resonse, all of the parameters are available to your on the ```Response``` object:
 ```php
 $response->instId;          // '123456'
 $response->cartId;          // 'My Shop'
 $response->amount;          // '9.99'
 $response->currency;        // 'GBP'
-$response->description;     // 'The name of my product'
+$response->description;     // 'Description of the transaction'
 $response->name;            // 'Philip Brown'
 $response->town;            // 'London'
 $response->postcode;        // 'E20 123'
