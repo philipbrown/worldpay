@@ -29,4 +29,16 @@ class ResponseTest extends TestCase {
     $this->assertInstanceOf('Carbon\Carbon', $r->timestamp);
   }
 
+  public function testResponseHelperMethods()
+  {
+    $wp = new Worldpay;
+    $r = $wp->response($this->getNormalResponse());
+    $this->assertEquals(true , $r->isValid('password_123'));
+    $this->assertEquals(true , $r->isSuccess());
+    $this->assertEquals(false , $r->isCancelled());
+    $this->assertEquals(false , $r->isFuturePay());
+    $this->assertEquals(false , $r->isProduction());
+    $this->assertEquals(true , $r->isDevelopment());
+  }
+
 }
