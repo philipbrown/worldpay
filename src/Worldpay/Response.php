@@ -72,7 +72,7 @@ class Response extends AbstractWorldpay {
    */
   public function isValid($password)
   {
-    return $this->getCallbackPWParameter() == $password;
+    return $this->getPasswordParameter() == $password;
   }
 
   /**
