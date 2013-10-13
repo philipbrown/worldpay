@@ -7,3 +7,6 @@ $wp = new Worldpay\Worldpay;
 
 // Set the environment
 $wp->setConfig(array('env' => 'development'));
+
+// Set your secret
+$wp->setSecret('my_secret');
