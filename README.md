@@ -60,3 +60,31 @@ $response = $wp->response($_POST);
 // You now have an easy to work with object
 $response->isSuccess(); // Returns TRUE / FALSE
 ```
+
+##Environments
+By default, WorldPay has development and production environments. This allows you to test your application using the test environment without having to process real payments.
+
+In order to receive a WorldPay response, you must provide a callback URL in your WorldPay account.
+
+For example, your ```production``` URL might be ```example.com``` and your dev URL might be ```dev.example.com```.
+
+You can set your environment by simply using the ```setConfig``` method on the ```Worldpay``` object:
+```php
+$wp->setConfig(array('env' => 'development'));
+```
+
+If you are using Laravel 4, you could set the environment automatically like this:
+```php
+$wp->setConfig(array('env' => App::environment()));
+```
+
+However, it is often the case that you need to have multiple environments beyond just ```dev``` and ```production```.
+
+For example, you might want to have a ```local``` environment or a ```test``` environment that do not actually hit the WorldPay servers.
+
+In this case, you can pass any environment names that you want as configuration items and an override URL that will be used instead of the default WorldPay URLs:
+```php
+$wp->setConfig(array(
+  'env' => 'local'
+  'local' => 'example.local/callbacks/worldpay'
+));
