@@ -20,7 +20,7 @@ class RequestTest extends TestCase {
     $this->assertEquals('GB', $r['data']['country']);
     $this->assertEquals('123456789', $r['data']['telephone']);
     $this->assertEquals('123', $r['data']['MC_customer_id']);
-    $this->assertEquals('456', $r['data']['MC_order_id']);
+    $this->assertEquals('456', $r['data']['CM_order_id']);
   }
 
   public function testSignature()

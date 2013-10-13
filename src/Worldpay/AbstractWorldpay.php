@@ -62,7 +62,7 @@ abstract class AbstractWorldpay {
    */
   protected function isCustomParam($key)
   {
-    if(substr($key, 0, 3) == 'MC_' || substr($key, 0, 2) == 'CM_')
+    if(substr($key, 0, 3) == 'MC_' || substr($key, 0, 3) == 'CM_')
     {
       return true;
     }
