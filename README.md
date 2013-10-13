@@ -116,7 +116,7 @@ To specify which fields will be included in your signature, go into your WorldPa
 By default, this WorldPay package will force you to use the default parameters of ```instId```, ```cartId```, ```currency```, ```amount```.
 
 You can add your own fields by using the ```setSignatureFields``` method:
-```
+```php
 $request->setSignatureFields(array('email'));
 ```
 
