@@ -90,6 +90,26 @@ $wp->setConfig(array(
 ));
 ```
 
+##Creating a Request
+To create a new request, simply pass an array of your transaction parameters to the ```request``` method on the ```Worldpay``` object:
+```php
+$request = $wp->request(array(
+  'instId' => '123456789',
+  'cartId' => 'worldpay-php',
+  'currency' => 'GBP',
+  'environment' => 'development',
+  'name' => 'Philip Brown',
+  'email' => 'phil@ipbrown.com',
+  'address_line_1' => '101 Blah Blah Lane',
+  'town' => 'London',
+  'postcode' => 'E20 123',
+  'country' => 'GB',
+  'telephone' => '123456789',
+  'payment_type' => 'VISA',
+  'amount' => '99.99'
+));
+```
+
 ##Setting a Secret
 To prevent unauthorised tampering of transaction requests, WorldPay allows you to set a secret key. This key is then used as part of the encryption of the transaction signature that you must send to WorldPay for each request.
 
@@ -119,4 +139,3 @@ You can add your own fields by using the ```setSignatureFields``` method:
 ```php
 $request->setSignatureFields(array('email'));
 ```
-
