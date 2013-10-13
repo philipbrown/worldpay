@@ -19,17 +19,16 @@ Add `philipbrown/worldpay` as a requirement to `composer.json`:
   }
 }
 ```
+Update your packages with `composer update`.
 
 ##How does WorldPay work?
 Creating a new payment using the WorldPay gateway basically follows these three steps:
 
-1. You create a **Request** with information about the transaction. This could be as little as simply the amount of the transaction all the way up to a complete profile of your customer.
+1. You create a **Request** with information about the transaction. This could be as little as the amount of the transaction all the way up to a complete profile of your customer.
 2. The customer is redirected to WorldPay's secure servers to enter their payment details. No customer details are ever stored on your server.
 3. WorldPay will then send an optional **Response** back to your server as a callback. You can use this callback to update your database or set any processes you need to run post transaction.
 
 This WorldPay package allows you to easily create a new **Request** and capture the resulting **Response**
-
-Update your packages with `composer update`.
 
 ###Creating a Request
 Creating a new request is as simple as instantiating a new ```Request``` object and passing it your transaction details.
