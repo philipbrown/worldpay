@@ -9,7 +9,7 @@
         }
     ],
     "autoload": {
-        "psr-0": { "Worldpay" : "src/" }
+        "psr-0": { "Philipbrown" : "src/" }
     },
     "require": {
         "php": ">=5.3.2",

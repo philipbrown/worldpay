@@ -1,4 +1,4 @@
-<?php namespace Worldpay;
+<?php namespace Philipbrown\Worldpay;
 
 use Symfony\Component\HttpFoundation\ParameterBag;
 

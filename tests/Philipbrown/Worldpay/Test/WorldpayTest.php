@@ -1,15 +1,17 @@
-<?php namespace Worldpay;
+<?php namespace Philipbrown\Worldpay\Test;
+
+use Philipbrown\Worldpay\Worldpay;
 
 class WorldpayTest extends TestCase {
 
   public function testRequestInstantiation()
   {
-    $this->assertInstanceOf('Worldpay\Request', $this->getWorldpay()->request($this->getNormalRequest()));
+    $this->assertInstanceOf('Philipbrown\Worldpay\Request', $this->getWorldpay()->request($this->getNormalRequest()));
   }
 
   public function testResponseInstantiation()
   {
-    $this->assertInstanceOf('Worldpay\Response', $this->getWorldpay()->response($this->getNormalResponse()));
+    $this->assertInstanceOf('Philipbrown\Worldpay\Response', $this->getWorldpay()->response($this->getNormalResponse()));
   }
 
   public function testEnvironementCallbackURL()

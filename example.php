@@ -3,7 +3,7 @@
 require __DIR__.'/vendor/autoload.php';
 
 // Create new Worldpay object
-$wp = new Worldpay\Worldpay;
+$wp = new Philipbrown\Worldpay\Worldpay;
 
 // Set the environment
 $wp->setConfig(array('env' => 'development'));
@@ -29,4 +29,4 @@ $request = $wp->request(array(
 $request->setSecret('my_secret');
 
 // Set custom signature fields
-$request->setSignatureFields(array('email'))
+$request->setSignatureFields(array('email'));

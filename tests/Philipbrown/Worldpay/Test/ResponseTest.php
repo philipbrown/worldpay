@@ -1,4 +1,6 @@
-<?php namespace Worldpay;
+<?php namespace Philipbrown\Worldpay\Test;
+
+use Philipbrown\Worldpay\Worldpay;
 
 class ResponseTest extends TestCase {
 

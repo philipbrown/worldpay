@@ -1,5 +1,6 @@
-<?php namespace Worldpay;
+<?php namespace Philipbrown\Worldpay\Test;
 
+use Philipbrown\Worldpay\Worldpay;
 use PHPUnit_Framework_TestCase;
 
 class TestCase extends PHPUnit_Framework_TestCase {
