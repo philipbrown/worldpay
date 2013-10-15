@@ -34,7 +34,7 @@ This WorldPay package allows you to easily create a new **Request** and capture 
 Creating a new request is as simple as instantiating a new ```Request``` object and passing it your transaction details.
 ```php
 // Get a new WorldPay object
-$wp = new Worldpay\Worldpay;
+$wp = new Philipbrown\Worldpay\Worldpay;
 
 // Create a Request
 $request = $wp->request(array(
@@ -52,7 +52,7 @@ $request->send();
 WorldPay will send a ```POST``` request to your server with details of the transaction. You simply need to capture this request and pass it to the ```Response``` object.
 ```php
 // Get a new WorldPay object
-$wp = new Worldpay\Worldpay;
+$wp = new Philipbrown\Worldpay\Worldpay;
 
 // Pass the $_POST to the Response object
 $response = $wp->response($_POST);
@@ -236,7 +236,7 @@ To set your callback URL, log in to your WorldPay account, choose the installati
 To capture a response, simply pass the ```POST``` request to the ```response``` method:
 ```php
 // Get a new WorldPay object
-$wp = new Worldpay\Worldpay;
+$wp = new Philipbrown\Worldpay\Worldpay;
 
 // Pass the $_POST to the Response object
 $response = $wp->response($_POST);
