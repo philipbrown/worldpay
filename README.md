@@ -255,7 +255,7 @@ This type of agreement is used to pay set or variable amounts at non-fixed inter
 
 **Interval** - This is the minimum interval allowed between payments.
 
-**NOTE:** Any of these above limits can be left unset for this option.
+**Note:** Any of these above limits can be left unset for this option.
 
 ```Option 1```
 
