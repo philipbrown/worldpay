@@ -226,7 +226,9 @@ $worldpay = $request->prepare();
 ```
 
 ## FuturePay
-...urgh I'll come back to this...
+FuturePay is WorldPays subscription service that allows you to set up recurring payment agreements with your customers.
+
+FuturePay does not come as standard on your WorldPay installations. In order to start using FuturePay you have to request that it be added to your installation.
 
 ##Capturing a WorldPay response
 A WorldPay response is simply a ```POST``` request to a URL that you define in your WorldPay account.
