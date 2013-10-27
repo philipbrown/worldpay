@@ -230,6 +230,55 @@ FuturePay is WorldPays subscription service that allows you to set up recurring 
 
 FuturePay does not come as standard on your WorldPay installations. In order to start using FuturePay you have to request that it be added to your installation.
 
+###Agreement Types
+FuturePay subscriptions can be either one of two types, **Regular** or **Limited**. Both of these agreement types have a specific set of options and required data in order to create a valid agreement. I will try to summarise these requirments in this documentation because trying to find a clear definition in the WorldPay documentation isn't easy.
+
+####Regular
+This type of agreement is used to pay or set variable ammounts at regular, fixed intervals over a specific time. This is typically used to pay for a monthly subscription.
+
+```Option 0``` - The individual payment amounts are fixed on creation of the agreement. You can set a different initial payment amount for the first payment if required.
+
+```Option 1``` - You must set the normal payment amount when the agreement is created. You can set a different initial payment amount for the first payment if required. If you wish you can then adjust the individual payment amount after the agreement has started. The amount cannot be adjusted when less than 8 days from the next payment date. The shopper will be sent an email whenever you adjust the amount.
+
+```Option 2``` - You cannot set the payment amount when the agreement is created. Before each payment you must set the payment amount using the Merchant Interface. If you do not set the amount then no payment is taken. The amount cannot be set when less than 8 days from the next payment date. The shopper will be sent an email whenever you set the amount.
+
+####Limited
+This type of agreement is used to pay set or variable amounts at non-fixed intervals. You can agree limits with the online store on the total amount payable, the interval between payments and the maximum amount per payment. This type of agreement is typically used by shoppers who make repeated purchases from a website, as it allows you to be billed for seperate purchases without having to re-enter your card details each time. It can also be used to pay for goods or services that are paid for on a pay-per-access or pay-per-use basis.
+
+```Option 0```
+
+**Amount limit** - This limits the amount of each individual payment. It does not limit the total value of the payments that can be made under the agreement.
+
+**Number of payments** - This is a limit on the total number of payments that can be made under this agreement.
+
+**Interval** - This is the minimum interval allowed between payments.
+
+**NOTE:** Any of these above limits can be left unset for this option.
+
+```Option 1```
+
+**Amount limit** - This limits the amount of each individual payment. It does not limit the total value of the payments that can be made under the agreement.
+
+**Number of payments** - This is a limit on the number of payments that can be made during the specified interval.
+
+**Interval** - This must be one of: 1 - day, 2 - week, 3 - month or 4 - year.
+
+```Option 2```
+
+**Amount limit** - This is a limit on the total value of payments that can be made under this agreement.
+
+**Number of payments** - This cannot be set.
+
+**Interval** - This cannot be set.
+
+```Option 3```
+
+**Amount limit** - This is a limit on the total value of payments that can be made during the specified interval.
+
+**Number of payments** - This cannot be set.
+
+**Interval** - This must be one of: 1 - day, 2 - week, 3 - month or 4 - year.
+
 ##Capturing a WorldPay response
 A WorldPay response is simply a ```POST``` request to a URL that you define in your WorldPay account.
 
