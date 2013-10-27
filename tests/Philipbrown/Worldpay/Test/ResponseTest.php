@@ -6,7 +6,7 @@ class ResponseTest extends TestCase {
 
   public function testGettingResponseParameters()
   {
-    $wp = new Worldpay;
+    $wp = $this->getWorldPay();
     $r = $wp->response($this->getNormalResponse());
     $this->assertEquals('123456', $r->instId);
     $this->assertEquals('my_shop', $r->cartId);
@@ -33,7 +33,7 @@ class ResponseTest extends TestCase {
 
   public function testResponseHelperMethods()
   {
-    $wp = new Worldpay;
+    $wp = $this->getWorldPay();
     $r = $wp->response($this->getNormalResponse());
     $this->assertEquals(true , $r->isValid('password_123'));
     $this->assertEquals(true , $r->isSuccess());
@@ -41,6 +41,14 @@ class ResponseTest extends TestCase {
     $this->assertEquals(false , $r->isFuturePay());
     $this->assertEquals(false , $r->isProduction());
     $this->assertEquals(true , $r->isDevelopment());
+  }
+
+  public function testFuturePayResponse()
+  {
+    $wp = $this->getWorldPay();
+    $r = $wp->response($this->getFuturePayResponse());
+    $this->assertEquals('987654321', $r->futurepay_id);
+    $this->assertEquals(true , $r->isFuturePay());
   }
 
 }

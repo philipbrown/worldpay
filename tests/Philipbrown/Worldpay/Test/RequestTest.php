@@ -25,6 +25,17 @@ class RequestTest extends TestCase {
     $this->assertEquals('456', $r['data']['CM_order_id']);
   }
 
+  public function testSettingFuturePayRequestParameters()
+  {
+    $wp = $this->getWorldpay();
+    $request = $wp->request($this->getFuturePayRequest());
+    $r = $request->prepare();
+    $this->assertEquals('regular', $r['data']['futurePayType']);
+    $this->assertEquals(0, $r['data']['option']);
+    $this->assertEquals(1, $r['data']['intervalMult']);
+    $this->assertEquals(4, $r['data']['intervalUnit']);
+  }
+
   public function testSignature()
   {
     $wp = $this->getWorldpay();
