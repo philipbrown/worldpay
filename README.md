@@ -279,6 +279,34 @@ This type of agreement is used to pay set or variable amounts at non-fixed inter
 
 **Interval** - This must be one of: 1 - day, 2 - week, 3 - month or 4 - year.
 
+###Making a FuturePay Request
+To make a FuturePay request, all you have to do is to provide some additional parameters. The parameters you will need to provide depend on what type of agreement you want to create.
+
+For example:
+```php
+$request = $wp->request(array(
+  'instId' => '123456789',
+  'cartId' => 'worldpay-php',
+  'currency' => 'GBP',
+  'environment' => 'development',
+  'name' => 'Philip Brown',
+  'email' => 'phil@ipbrown.com',
+  'address_line_1' => '101 Blah Blah Lane',
+  'town' => 'London',
+  'postcode' => 'E20 123',
+  'country' => 'GB',
+  'telephone' => '123456789',
+  'payment_type' => 'VISA',
+  'futurePay_type' => 'regular',
+  'option' => 0,
+  'start_date' => 'tomorrow',
+  'interval' => '1 year',
+  'initial_amount' => '99.99',
+  'normal_amount' => '19.99',
+));
+```
+The full scope of FuturePay options and required fields is a lot to get your head around and I have inclination to want to spend hours researching it. I've tried to cover the majority of use cases for FuturePay with this package, but if I missed out a parameter that you need, or if you want to contribute documentation or an explanation of how FuturePay works and what is required, feel free to send a Pull Request.
+
 ##Capturing a WorldPay response
 A WorldPay response is simply a ```POST``` request to a URL that you define in your WorldPay account.
 
