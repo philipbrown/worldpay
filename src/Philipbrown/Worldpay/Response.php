@@ -469,7 +469,7 @@ class Response extends AbstractWorldpay {
    */
   protected function getCardTypeParameter()
   {
-    return $this->parameters->get('cardType', $value);
+    return $this->parameters->get('cardType');
   }
 
   /**
