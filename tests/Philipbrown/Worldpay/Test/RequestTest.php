@@ -34,6 +34,7 @@ class RequestTest extends TestCase {
     $this->assertEquals(0, $r['data']['option']);
     $this->assertEquals(1, $r['data']['intervalMult']);
     $this->assertEquals(4, $r['data']['intervalUnit']);
+    $this->assertEquals($this->getTomorrow(), $r['data']['startDate']);
   }
 
   public function testSignature()

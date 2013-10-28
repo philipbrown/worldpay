@@ -2,6 +2,7 @@
 
 use Philipbrown\Worldpay\Worldpay;
 use PHPUnit_Framework_TestCase;
+use Carbon\Carbon;
 
 class TestCase extends PHPUnit_Framework_TestCase {
 
@@ -10,6 +11,17 @@ class TestCase extends PHPUnit_Framework_TestCase {
     $wp = new Worldpay;
     $wp->setConfig(array('env' => 'development'));
     return $wp;
+  }
+
+  public function getToday()
+  {
+    return Carbon::now();
+  }
+
+  public function getTomorrow()
+  {
+    $date = new Carbon('tomorrow');
+    return $date->toDateString();
   }
 
   public function getNormalRequest()
