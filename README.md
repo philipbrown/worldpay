@@ -401,12 +401,12 @@ Try and stick with the conventions of the package and write tests for your added
 
 If you want to propose something before writing the code, feel free to open a Pull Request first.
 
-##To Do list
+###To Do list
 The following items are things that I want to add to this package.
-1. More detailed documentation of every WorldPay option
-2. Validations to ensure that FuturePay requests are correct before they are sent to WorldPay
-3. Exceptions to prevent weird things happening
-4. Fake none standard ```Response``` requests so to complete the circle when not using a standard environment
+* More detailed documentation of every WorldPay option
+* Validations to ensure that FuturePay requests are correct before they are sent to WorldPay
+* Exceptions to prevent weird things happening
+* Fake none standard ```Response``` requests so to complete the circle when not using a standard environment
 
 If you want to contribute any of the above items, that would be amazing.
 
