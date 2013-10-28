@@ -5,7 +5,7 @@ class Worldpay {
   /**
    * @var array
    */
-  protected $config;
+  protected $config = array('env' => 'development');
 
   /**
    * Set Config
@@ -15,7 +15,7 @@ class Worldpay {
    */
   public function setConfig($config)
   {
-    $this->config = $config;
+    $this->config = array_merge($this->config, $config);
   }
 
   /**

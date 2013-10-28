@@ -24,6 +24,39 @@ class Response extends AbstractWorldpay {
     $this->initialise($parameters);
 
     $this->parameters->set('timestamp', Carbon::now());
+
+    if($this->isCustomEnv())
+    {
+      $this->fakeWorldPayRequest($parameters);
+    }
+  }
+
+  /**
+   * Is Custom Environment
+   *
+   * @return bool
+   */
+  protected function isCustomEnv()
+  {
+    if($this->config['env'] !== 'development' && $this->config['env'] !== 'production')
+    {
+      return true;
+    }
+
+    return false;
+  }
+
+  /**
+   * Fake WorldPay Request
+   *
+   */
+  public function fakeWorldPayRequest()
+  {
+    $this->parameters->set('testMode', 100);
+    $this->parameters->set('callbackPW', $this->config['password']);
+    $this->parameters->set('transStatus', 'Y');
+    $this->parameters->set('transId', '123456789');
+    $this->parameters->set('ipAddress', '123.456.789');
   }
 
   /**
