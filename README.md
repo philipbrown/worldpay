@@ -1,5 +1,5 @@
 #WorldPay
-**A PHP 5.3+ wrapper for the [WorldPay](http://worldpay.com) payment gateway**
+**A PHP 5.3+ wrapper for the [WorldPay](http://worldpay.com) payment gateway.**
 
 [![Build Status](https://travis-ci.org/philipbrown/worldpay.png?branch=master)](https://travis-ci.org/philipbrown/worldpay)
 
@@ -393,6 +393,22 @@ Alternatively, to check to see if this was a development transaction, you can us
 ```php
 $response->isDevelopment(); // TRUE / FALSE
 ```
+
+##Contributing
+I've tried to cover as many of the WorldPay options as possible, but there are still things I've missed off. If there is a particular aspect of interacting with WorldPay that you need, please feel free to open a Pull Request.
+
+Try and stick with the conventions of the package and write tests for your added functionality. It makes accepting Pull Requests quicker and it ensures that I don't break your code going forward. If your code doesn't pass the Travis check, don't worry about it, just fix the problems and try again.
+
+If you want to propose something before writing the code, feel free to open a Pull Request first.
+
+##To Do list
+The following items are things that I want to add to this package.
+1. More detailed documentation of every WorldPay option
+2. Validations to ensure that FuturePay requests are correct before they are sent to WorldPay
+3. Exceptions to prevent weird things happening
+4. Fake none standard ```Response``` requests so to complete the circle when not using a standard environment
+
+If you want to contribute any of the above items, that would be amazing.
 
 ## License
 The MIT License (MIT)
