@@ -6,10 +6,10 @@ use Carbon\Carbon;
 
 class TestCase extends PHPUnit_Framework_TestCase {
 
-  public function getWorldPay()
+  public function getWorldPay($options = array('env' => 'development'))
   {
     $wp = new Worldpay;
-    $wp->setConfig(array('env' => 'development'));
+    $wp->setConfig($options);
     return $wp;
   }
 

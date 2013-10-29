@@ -36,12 +36,12 @@ class ResponseTest extends TestCase {
   {
     $wp = $this->getWorldPay();
     $r = $wp->response($this->getNormalResponse());
-    $this->assertEquals(true , $r->isValid('password_123'));
-    $this->assertEquals(true , $r->isSuccess());
-    $this->assertEquals(false , $r->isCancelled());
-    $this->assertEquals(false , $r->isFuturePay());
-    $this->assertEquals(false , $r->isProduction());
-    $this->assertEquals(true , $r->isDevelopment());
+    $this->assertEquals(true, $r->isValid('password_123'));
+    $this->assertEquals(true, $r->isSuccess());
+    $this->assertEquals(false, $r->isCancelled());
+    $this->assertEquals(false, $r->isFuturePay());
+    $this->assertEquals(false, $r->isProduction());
+    $this->assertEquals(true, $r->isDevelopment());
   }
 
   public function testFuturePayResponse()
@@ -49,13 +49,12 @@ class ResponseTest extends TestCase {
     $wp = $this->getWorldPay();
     $r = $wp->response($this->getFuturePayResponse());
     $this->assertEquals('987654321', $r->futurepay_id);
-    $this->assertEquals(true , $r->isFuturePay());
+    $this->assertEquals(true, $r->isFuturePay());
   }
 
   public function testFakeRequestResponse()
   {
-    $wp = new Worldpay;
-    $wp->setConfig(array(
+    $wp = $this->getWorldPay(array(
       'env' => 'local',
       'password' => 'password_123'
     ));
@@ -70,12 +69,12 @@ class ResponseTest extends TestCase {
     $this->assertEquals('GB', $r->country);
     $this->assertEquals('123456789', $r->telephone);
     $this->assertEquals('VISA', $r->card_type);
-    $this->assertEquals(true , $r->isValid('password_123'));
-    $this->assertEquals(true , $r->isSuccess());
-    $this->assertEquals(false , $r->isCancelled());
-    $this->assertEquals(false , $r->isFuturePay());
-    $this->assertEquals(false , $r->isProduction());
-    $this->assertEquals(true , $r->isDevelopment());
+    $this->assertEquals(true, $r->isValid('password_123'));
+    $this->assertEquals(true, $r->isSuccess());
+    $this->assertEquals(false, $r->isCancelled());
+    $this->assertEquals(false, $r->isFuturePay());
+    $this->assertEquals(false, $r->isProduction());
+    $this->assertEquals(true, $r->isDevelopment());
   }
 
 }
