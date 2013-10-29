@@ -499,6 +499,10 @@ class Request extends AbstractWorldpay {
     {
       $this->parameters->set('endDate', $date->toDateString());
     }
+    else
+    {
+      throw new InvalidRequestException('The end date must be in the future');
+    }
   }
 
 }

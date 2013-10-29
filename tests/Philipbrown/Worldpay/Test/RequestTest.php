@@ -117,4 +117,17 @@ class RequestTest extends TestCase {
     $request->prepare();
   }
 
+  /**
+   * @expectedException        Philipbrown\Worldpay\Exceptions\InvalidRequestException
+   * @expectedExceptionMessage The end date must be in the future
+   */
+  public function testEndDateInThePastException()
+  {
+    $wp = $this->getWorldpay();
+    $request = $wp->request(array(
+      'end_date' => 'yesterday'
+    ));
+    $request->prepare();
+  }
+
 }
