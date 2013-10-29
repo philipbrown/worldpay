@@ -452,9 +452,7 @@ If you want to propose something before writing the code, feel free to open a Pu
 
 ###To Do list
 The following items are things that I want to add to this package.
-* More detailed documentation of every WorldPay option
 * Validations to ensure that FuturePay requests are correct before they are sent to WorldPay
-* Exceptions to prevent weird things happening
 
 If you want to contribute any of the above items, that would be amazing.
 
