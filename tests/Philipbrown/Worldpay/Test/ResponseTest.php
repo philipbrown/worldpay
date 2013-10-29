@@ -29,6 +29,8 @@ class ResponseTest extends TestCase {
     $this->assertEquals('My Place', $r->address_line_3);
     $this->assertEquals('123456789', $r->telephone);
     $this->assertEquals('987654321', $r->fax);
+    $this->assertEquals('456', $r->CM_order_id);
+    $this->assertEquals('123', $r->MC_customer_id);
     $this->assertEquals('United Kingdom', $r->country_string);
     $this->assertInstanceOf('Carbon\Carbon', $r->timestamp);
     $this->assertEquals($this->getToday(), $r->timestamp);

@@ -73,7 +73,9 @@ class TestCase extends PHPUnit_Framework_TestCase {
       'fax'           => '987654321',
       'country'       => 'GB',
       'countryString' => 'United Kingdom',
-      'email'         => 'phil@ipbrown.com'
+      'email'         => 'phil@ipbrown.com',
+      'CM_order_id'     => 456,
+      'MC_customer_id'  => 123
     );
   }
 
