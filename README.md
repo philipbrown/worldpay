@@ -26,9 +26,9 @@ Update your packages with `composer update`.
 ##How does WorldPay work?
 Creating a new payment using the WorldPay gateway basically follows these three steps:
 
-1. You create a **Request** with information about the transaction. This could be as little as the amount of the transaction all the way up to a complete profile of your customer.
+1. You create a **Request** with information about the transaction. This could be as little as the basic details of the transaction all the way up to a complete profile of your customer.
 2. The customer is redirected to WorldPay's secure servers to enter their payment details. No customer details are ever stored on your server.
-3. WorldPay will then send an optional **Response** back to your server as a callback. You can use this callback to update your database or set any processes you need to run post transaction.
+3. WorldPay will then send an optional **Response** back to your server as a callback. You can use this callback to update your database or set any processes you need to run after the transaction has been completed.
 
 This WorldPay package allows you to easily create a new **Request** and capture the resulting **Response**
 
@@ -64,11 +64,11 @@ $response->isSuccess(); // Returns TRUE / FALSE
 ```
 
 ##Environments
-By default, WorldPay has development and production environments. This allows you to test your application using the test environment without having to process real payments.
+By default, WorldPay has ```development``` and ```production``` environments. This allows you to test your application using the ```development``` environment without having to process real payments.
 
 In order to receive a WorldPay response, you must provide a callback URL in your WorldPay account.
 
-For example, your ```production``` URL might be ```example.com``` and your dev URL might be ```dev.example.com```.
+For example, your ```production``` URL might be ```example.com``` and your ```development``` URL might be ```dev.example.com```.
 
 You can set your environment by simply using the ```setConfig``` method on the ```Worldpay``` object:
 ```php
@@ -80,16 +80,37 @@ If you are using Laravel 4, you could set the environment automatically like thi
 $wp->setConfig(array('env' => App::environment()));
 ```
 
-However, it is often the case that you need to have multiple environments beyond just ```dev``` and ```production```.
+However, it is often the case that you need to have multiple environments beyond just ```development``` and ```production```.
 
 For example, you might want to have a ```local``` environment or a ```test``` environment that do not actually hit the WorldPay servers.
 
-In this case, you can pass any environment names that you want as configuration items and an override URL that will be used instead of the default WorldPay URLs:
+In this case, you can pass a url to override the default WorldPay endpoint.
 ```php
 $wp->setConfig(array(
   'env' => 'local'
-  'local' => 'example.local/callbacks/worldpay'
+  'url' => 'example.local/callbacks/worldpay'
+  'password' => 'qwerty'
 ));
+```
+So instead of the request getting sent to WorldPay, the request is actually sent straight to your callback endpoint. The request is automatically converted into a correct WorldPay response with fake data for the WorldPay generated attributes.
+
+Remember to set the password attribute in your configuration. This is used to check whether the fake response is "valid".
+
+###Laravel 4 configuration
+If you are using Laravel 4, setting up your different environment configuration is really simple.
+
+Simply create a new configuration file for each of your environments:
+```php
+array(
+  'env' => 'local'
+  'url' => 'example.local/callbacks/worldpay'
+  'password' => 'qwerty'
+);
+```
+
+When instantiating a new ```Worldpay``` object you can just get the configuration and Laravel will handle merging in the right file:
+```php
+$wp->setConfig(Config::get('worldpay'));
 ```
 
 ##Creating a Request
@@ -404,7 +425,6 @@ The following items are things that I want to add to this package.
 * More detailed documentation of every WorldPay option
 * Validations to ensure that FuturePay requests are correct before they are sent to WorldPay
 * Exceptions to prevent weird things happening
-* Fake none standard ```Response``` requests so to complete the circle when not using a standard environment
 
 If you want to contribute any of the above items, that would be amazing.
 
