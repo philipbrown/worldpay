@@ -47,19 +47,6 @@ class Response extends AbstractWorldpay {
   }
 
   /**
-   * Fake WorldPay Request
-   *
-   */
-  public function fakeWorldPayRequest()
-  {
-    $this->parameters->set('testMode', 100);
-    $this->parameters->set('callbackPW', $this->config['password']);
-    $this->parameters->set('transStatus', 'Y');
-    $this->parameters->set('transId', '123456789');
-    $this->parameters->set('ipAddress', '123.456.789');
-  }
-
-  /**
    * Get Default Parameters
    *
    * @return array
@@ -74,7 +61,6 @@ class Response extends AbstractWorldpay {
       'instId',
       'cartId',
       'amount',
-      'amountString',
       'cardType',
       'currency',
       'ipAddress',
@@ -593,6 +579,59 @@ class Response extends AbstractWorldpay {
   protected function getCountryStringParameter()
   {
     return $this->parameters->get('countryString');
+  }
+
+  /**
+   * Fake WorldPay Request
+   *
+   */
+  public function fakeWorldPayRequest($parameters)
+  {
+    $parameters = array_merge($this->getDefaultResponseParameters(), $parameters);
+    $this->parameters->set('testMode', 100);
+    $this->parameters->set('callbackPW', $this->config['password']);
+    $this->parameters->set('transStatus', 'Y');
+    $this->parameters->set('transId', rand(1000000000, 2000000000));
+    $this->parameters->set('cardType', $parameters['payment_type']);
+    $this->parameters->set('ipAddress', '123.456.789');
+    $this->parameters->set('desc', $parameters['description']);
+    $this->parameters->set('address1', $parameters['address_line_1']);
+    $this->parameters->set('address2', $parameters['address_line_2']);
+    $this->parameters->set('address3', $parameters['address_line_3']);
+    $this->parameters->set('tel', $parameters['telephone']);
+    $this->parameters->set('futurePayId', $this->isFakeFuturePay($parameters));
+  }
+
+  /**
+   * Is Fake FuturePay
+   *
+   * @var array $parameters
+   * @return mixed
+   */
+  public function isFakeFuturePay($parameters)
+  {
+    if(isset($parameters['futurePay_type']))
+    {
+      return rand(10000000, 10999999);
+    }
+    return null;
+  }
+
+  /**
+   * Get Default Response Parameters
+   *
+   * @return array
+   */
+  public function getDefaultResponseParameters()
+  {
+    return array(
+      'payment_type' => null,
+      'description' => null,
+      'address_line_1' => null,
+      'address_line_2' => null,
+      'address_line_3' => null,
+      'telephone' => null
+    );
   }
 
 }

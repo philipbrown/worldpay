@@ -52,4 +52,30 @@ class ResponseTest extends TestCase {
     $this->assertEquals(true , $r->isFuturePay());
   }
 
+  public function testFakeRequestResponse()
+  {
+    $wp = new Worldpay;
+    $wp->setConfig(array(
+      'env' => 'local',
+      'password' => 'password_123'
+    ));
+    $r = $wp->response($this->getNormalRequest());
+    $this->assertEquals('123456789', $r->instId);
+    $this->assertEquals('my_shop', $r->cartId);
+    $this->assertEquals('99.99', $r->amount);
+    $this->assertEquals('GBP', $r->currency);
+    $this->assertEquals('Philip Brown', $r->name);
+    $this->assertEquals('101 Blah Blah Lane', $r->address_line_1);
+    $this->assertEquals('London', $r->town);
+    $this->assertEquals('GB', $r->country);
+    $this->assertEquals('123456789', $r->telephone);
+    $this->assertEquals('VISA', $r->card_type);
+    $this->assertEquals(true , $r->isValid('password_123'));
+    $this->assertEquals(true , $r->isSuccess());
+    $this->assertEquals(false , $r->isCancelled());
+    $this->assertEquals(false , $r->isFuturePay());
+    $this->assertEquals(false , $r->isProduction());
+    $this->assertEquals(true , $r->isDevelopment());
+  }
+
 }
