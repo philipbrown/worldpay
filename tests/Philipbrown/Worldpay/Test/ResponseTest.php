@@ -25,8 +25,10 @@ class ResponseTest extends TestCase {
     $this->assertEquals('123.456.789', $r->ip_address);
     $this->assertEquals('Acme PHP Ltd', $r->company_name);
     $this->assertEquals('101 Blah Lane', $r->address_line_1);
+    $this->assertEquals('My Street', $r->address_line_2);
+    $this->assertEquals('My Place', $r->address_line_3);
     $this->assertEquals('123456789', $r->telephone);
-    $this->assertEquals('', $r->fax);
+    $this->assertEquals('987654321', $r->fax);
     $this->assertEquals('United Kingdom', $r->country_string);
     $this->assertInstanceOf('Carbon\Carbon', $r->timestamp);
     $this->assertEquals($this->getToday(), $r->timestamp);
@@ -65,9 +67,12 @@ class ResponseTest extends TestCase {
     $this->assertEquals('GBP', $r->currency);
     $this->assertEquals('Philip Brown', $r->name);
     $this->assertEquals('101 Blah Blah Lane', $r->address_line_1);
+    $this->assertEquals('My Street', $r->address_line_2);
+    $this->assertEquals('My Place', $r->address_line_3);
     $this->assertEquals('London', $r->town);
     $this->assertEquals('GB', $r->country);
     $this->assertEquals('123456789', $r->telephone);
+    $this->assertEquals('987654321', $r->fax);
     $this->assertEquals('VISA', $r->card_type);
     $this->assertEquals(true, $r->isValid('password_123'));
     $this->assertEquals(true, $r->isSuccess());
