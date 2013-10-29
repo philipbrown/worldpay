@@ -200,18 +200,17 @@ class Request extends AbstractWorldpay {
    */
   protected function getEndpoint()
   {
-    $env = ($this->config['env']) ? $this->config['env'] : 'development';
-
-    if($env == 'production' || $env == 'development')
+    if(!$this->isCustomEnv())
     {
       return $this->endpoints[$env];
     }
 
-    /**
-     * TO DO:
-     * Add exception environment hasn't been set correctly
-     */
-    return $this->config['url'];
+    if(isset($this->config['url']))
+    {
+      return $this->config['url'];
+    }
+
+    throw new InvalidRequestException('You need to set a callback URL');
   }
 
   /**

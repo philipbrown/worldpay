@@ -78,4 +78,17 @@ class RequestTest extends TestCase {
     $request->prepare();
   }
 
+  /**
+   * @expectedException        Philipbrown\Worldpay\Exceptions\InvalidRequestException
+   * @expectedExceptionMessage You need to set a callback URL
+   */
+  public function testMissingCallbackURL()
+  {
+    $wp = $this->getWorldpay(array(
+      'env' => 'local'
+    ));
+    $request = $wp->request(array());
+    $request->prepare();
+  }
+
 }

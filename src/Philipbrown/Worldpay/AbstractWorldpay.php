@@ -18,6 +18,21 @@ abstract class AbstractWorldpay {
   }
 
   /**
+   * Is Custom Environment
+   *
+   * @return bool
+   */
+  protected function isCustomEnv()
+  {
+    if($this->config['env'] !== 'development' && $this->config['env'] !== 'production')
+    {
+      return true;
+    }
+
+    return false;
+  }
+
+  /**
    * Initialise the object with parameters
    *
    * Set the default parameters first and then set the
