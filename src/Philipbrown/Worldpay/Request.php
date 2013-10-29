@@ -432,7 +432,7 @@ class Request extends AbstractWorldpay {
    * @var decimal $value
    * @return void
    */
-  protected function setInitialAmount($value)
+  protected function setInitialAmountParameter($value)
   {
     $this->parameters->set('initialAmount', $value);
   }
@@ -451,7 +451,7 @@ class Request extends AbstractWorldpay {
    * @var decimal $value
    * @return void
    */
-  protected function setNormalAmount($value)
+  protected function setNormalAmountParameter($value)
   {
     $this->parameters->set('normalAmount', $value);
   }
