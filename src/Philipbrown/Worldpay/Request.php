@@ -44,7 +44,7 @@ class Request extends AbstractWorldpay {
 
     $this->initialise($parameters);
 
-    $this->setEnvironmentParameter(($config['env']) ? $config['env'] : 'development');
+    $this->setEnvironmentParameter($config['env']);
   }
 
   /**
