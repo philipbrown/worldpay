@@ -96,8 +96,20 @@ So instead of the request getting sent to WorldPay, the request is actually sent
 
 Remember to set the password attribute in your configuration. This is used to check whether the fake response is "valid".
 
-###Laravel 4 configuration
-If you are using Laravel 4, setting up your different environment configuration is really simple.
+##Laravel 4 configuration
+If you are using Laravel 4, setting up Worldpay is really simple.
+
+Once you have installed the packaged throught composer, add the following line to your list of Service Providers:
+```php
+'Philipbrown\Worldpay\WorldpayServiceProvider'
+```
+
+You can now use access WorldPay using Laravel Facades:
+```php
+$request = Worldpay::request(array());
+```
+
+Setting up your different environment configuration is also really simple.
 
 Simply create a new configuration file for each of your environments:
 ```php
@@ -112,6 +124,9 @@ When instantiating a new ```Worldpay``` object you can just get the configuratio
 ```php
 $wp->setConfig(Config::get('worldpay'));
 ```
+
+##What about <framework>?
+This package is framework agnostic so it should work with any PHP framework. If you would like to add a framework specific bootstrap, please open a pull request.
 
 ##Creating a Request
 To create a new request, simply pass an array of your transaction parameters to the ```request``` method on the ```Worldpay``` object:
