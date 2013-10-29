@@ -14,10 +14,22 @@ class WorldpayTest extends TestCase {
     $this->assertInstanceOf('Philipbrown\Worldpay\Response', $this->getWorldpay()->response($this->getNormalResponse()));
   }
 
+  public function testCallbackURL()
+  {
+    $wp = $this->getWorldpay();
+    $request = $wp->request(array(
+      'instId' => '123456',
+      'cartId' => 'my_shop',
+      'currency' => 'GBP',
+      'amount' => 9.99
+    ));
+    $prepare = $request->prepare();
+    $this->assertEquals('https://secure-test.worldpay.com/wcc/purchase', $prepare['endpoint']);
+  }
+
   public function testEnvironementCallbackURL()
   {
-    $wp = new WorldPay;
-    $wp->setConfig(array(
+    $wp = $this->getWorldpay(array(
       'env' => 'local',
       'url' => 'example.local/callbacks/worldpay'
     ));
