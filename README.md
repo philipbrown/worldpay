@@ -125,7 +125,7 @@ When instantiating a new ```Worldpay``` object you can just get the configuratio
 $wp->setConfig(Config::get('worldpay'));
 ```
 
-##What about <framework>?
+##What about $framework?
 This package is framework agnostic so it should work with any PHP framework. If you would like to add a framework specific bootstrap, please open a pull request.
 
 ##Creating a Request
