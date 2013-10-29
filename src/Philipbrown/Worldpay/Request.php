@@ -2,6 +2,7 @@
 
 use Carbon\Carbon;
 use Symfony\Component\HttpFoundation\RedirectResponse as HttpRedirectResponse;
+use Philipbrown\Worldpay\Exceptions\InvalidRequestException as InvalidRequestException;
 
 class Request extends AbstractWorldpay {
 
@@ -304,6 +305,8 @@ class Request extends AbstractWorldpay {
     if($value == 'limited' || $value == 'regular')
     {
       $this->parameters->set('futurePayType', $value);
+    }else{
+      throw new InvalidRequestException('Invalid FuturePay type');
     }
   }
 

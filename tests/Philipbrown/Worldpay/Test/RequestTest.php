@@ -65,4 +65,17 @@ class RequestTest extends TestCase {
     $this->assertInstanceOf('Symfony\Component\HttpFoundation\RedirectResponse', $wp->request($this->getNormalRequest())->send());
   }
 
+  /**
+   * @expectedException        Philipbrown\Worldpay\Exceptions\InvalidRequestException
+   * @expectedExceptionMessage Invalid FuturePay type
+   */
+  public function testInvalidFuturePayType()
+  {
+    $wp = $this->getWorldpay();
+    $request = $wp->request(array(
+      'futurepay_type' => 'oh noes'
+    ));
+    $request->prepare();
+  }
+
 }
