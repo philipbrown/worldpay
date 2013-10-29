@@ -91,4 +91,17 @@ class RequestTest extends TestCase {
     $request->prepare();
   }
 
+  /**
+   * @expectedException        Philipbrown\Worldpay\Exceptions\InvalidRequestException
+   * @expectedExceptionMessage The start date must be in the future
+   */
+  public function testStartDateInThePast()
+  {
+    $wp = $this->getWorldpay();
+    $request = $wp->request(array(
+      'start_date' => 'yesterday'
+    ));
+    $request->prepare();
+  }
+
 }

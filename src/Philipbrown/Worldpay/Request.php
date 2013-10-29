@@ -304,7 +304,8 @@ class Request extends AbstractWorldpay {
     if($value == 'limited' || $value == 'regular')
     {
       $this->parameters->set('futurePayType', $value);
-    }else{
+    }else
+    {
       throw new InvalidRequestException('Invalid FuturePay type');
     }
   }
@@ -344,6 +345,9 @@ class Request extends AbstractWorldpay {
     if($date->isFuture())
     {
       $this->parameters->set('startDate', $date->toDateString());
+    }else
+    {
+      throw new InvalidRequestException('The start date must be in the future');
     }
   }
 
