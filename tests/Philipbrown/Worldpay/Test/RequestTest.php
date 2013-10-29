@@ -69,7 +69,7 @@ class RequestTest extends TestCase {
    * @expectedException        Philipbrown\Worldpay\Exceptions\InvalidRequestException
    * @expectedExceptionMessage Invalid FuturePay type
    */
-  public function testInvalidFuturePayType()
+  public function testInvalidFuturePayTypeException()
   {
     $wp = $this->getWorldpay();
     $request = $wp->request(array(
@@ -82,7 +82,7 @@ class RequestTest extends TestCase {
    * @expectedException        Philipbrown\Worldpay\Exceptions\InvalidRequestException
    * @expectedExceptionMessage You need to set a callback URL
    */
-  public function testMissingCallbackURL()
+  public function testMissingCallbackURLException()
   {
     $wp = $this->getWorldpay(array(
       'env' => 'local'
@@ -95,11 +95,24 @@ class RequestTest extends TestCase {
    * @expectedException        Philipbrown\Worldpay\Exceptions\InvalidRequestException
    * @expectedExceptionMessage The start date must be in the future
    */
-  public function testStartDateInThePast()
+  public function testStartDateInThePastException()
   {
     $wp = $this->getWorldpay();
     $request = $wp->request(array(
       'start_date' => 'yesterday'
+    ));
+    $request->prepare();
+  }
+
+  /**
+   * @expectedException        Philipbrown\Worldpay\Exceptions\InvalidRequestException
+   * @expectedExceptionMessage The number of payments must greater than 0
+   */
+  public function testNumberOfPaymentsException()
+  {
+    $wp = $this->getWorldpay();
+    $request = $wp->request(array(
+      'number_of_payments' => 0
     ));
     $request->prepare();
   }
