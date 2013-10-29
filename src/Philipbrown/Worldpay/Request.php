@@ -202,7 +202,7 @@ class Request extends AbstractWorldpay {
   {
     if(!$this->isCustomEnv())
     {
-      return $this->endpoints[$env];
+      return $this->endpoints[$this->config['env']];
     }
 
     if(isset($this->config['url']))
