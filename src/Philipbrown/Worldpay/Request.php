@@ -220,7 +220,7 @@ class Request extends AbstractWorldpay {
    */
   protected function getQueryString()
   {
-    return '?signature='.$this->getSignature().'?'.http_build_query($this->getData());
+    return '?signature='.$this->getSignature().'&'.http_build_query($this->getData());
   }
 
   /**
