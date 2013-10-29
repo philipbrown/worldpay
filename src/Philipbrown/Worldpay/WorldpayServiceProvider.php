@@ -2,7 +2,7 @@
 
 use Illuminate\Support\ServiceProvider;
 
-class WorldpayProvider extends ServiceProvider {
+class WorldpayServiceProvider extends ServiceProvider {
 
   /**
    * Indicates if loading of the provider is deferred.
