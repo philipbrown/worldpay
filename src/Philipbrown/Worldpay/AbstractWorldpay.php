@@ -250,6 +250,17 @@ abstract class AbstractWorldpay {
   }
 
   /**
+   * Set Fax Parameter
+   *
+   * @var string $value
+   * @return void
+   */
+  protected function setFaxParameter($value)
+  {
+    $this->parameters->set('fax', $value);
+  }
+
+  /**
    * Dynamically set attributes on the object
    *
    * @var string $key

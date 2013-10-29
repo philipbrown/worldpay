@@ -297,17 +297,6 @@ class Response extends AbstractWorldpay {
   }
 
   /**
-   * Set Fax Parameter
-   *
-   * @var string $value
-   * @return void
-   */
-  protected function setFaxParameter($value)
-  {
-    $this->parameters->set('fax', $value);
-  }
-
-  /**
    * Set Country String Parameter
    *
    * @var string $value

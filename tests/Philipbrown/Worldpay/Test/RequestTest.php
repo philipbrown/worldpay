@@ -17,10 +17,13 @@ class RequestTest extends TestCase {
     $this->assertEquals('Philip Brown', $r['data']['name']);
     $this->assertEquals('phil@ipbrown.com', $r['data']['email']);
     $this->assertEquals('101 Blah Blah Lane', $r['data']['address1']);
+    $this->assertEquals('My Street', $r['data']['address2']);
+    $this->assertEquals('My Place', $r['data']['address3']);
     $this->assertEquals('London', $r['data']['town']);
     $this->assertEquals('E20 123', $r['data']['postcode']);
     $this->assertEquals('GB', $r['data']['country']);
     $this->assertEquals('123456789', $r['data']['telephone']);
+    $this->assertEquals('987654321', $r['data']['fax']);
     $this->assertEquals('123', $r['data']['MC_customer_id']);
     $this->assertEquals('456', $r['data']['CM_order_id']);
   }
