@@ -559,7 +559,7 @@ class Response extends AbstractWorldpay {
    * Fake WorldPay Request
    *
    */
-  public function fakeWorldPayRequest($parameters)
+  protected function fakeWorldPayRequest($parameters)
   {
     $parameters = array_merge($this->getDefaultResponseParameters(), $parameters);
     $this->parameters->set('testMode', 100);
@@ -582,7 +582,7 @@ class Response extends AbstractWorldpay {
    * @var array $parameters
    * @return mixed
    */
-  public function isFakeFuturePay($parameters)
+  protected function isFakeFuturePay($parameters)
   {
     if(isset($parameters['futurePay_type']))
     {
@@ -596,7 +596,7 @@ class Response extends AbstractWorldpay {
    *
    * @return array
    */
-  public function getDefaultResponseParameters()
+  protected function getDefaultResponseParameters()
   {
     return array(
       'payment_type' => null,
