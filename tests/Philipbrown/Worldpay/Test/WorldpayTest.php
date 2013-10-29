@@ -19,7 +19,7 @@ class WorldpayTest extends TestCase {
     $wp = new WorldPay;
     $wp->setConfig(array(
       'env' => 'local',
-      'local' => 'example.local/callbacks/worldpay'
+      'url' => 'example.local/callbacks/worldpay'
     ));
     $request = $wp->request(array(
       'instId' => '123456',
