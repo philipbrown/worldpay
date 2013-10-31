@@ -10,7 +10,7 @@ class Worldpay {
   /**
    * Set Config
    *
-   * @var array
+   * @param array
    * @return void
    */
   public function setConfig($config)

@@ -7,7 +7,7 @@ class Translate {
    *
    * Convert WorldPay environment from string to integer
    *
-   * @var $input string
+   * @param $input string
    * @return integer
    */
   public static function setTestMode($input)
@@ -22,7 +22,7 @@ class Translate {
    *
    * Convert WorldPay environment from integer to string
    *
-   * @var $input integer
+   * @param $input integer
    * @return string
    */
   public static function getTestMode($input)
@@ -37,7 +37,7 @@ class Translate {
    *
    * Convert interval string into correct WorldPay parameter
    *
-   * @var $input string
+   * @param $input string
    * @return integer
    */
   public static function unit($input)

@@ -38,7 +38,7 @@ abstract class AbstractWorldpay {
    * Set the default parameters first and then set the
    * user given parameters second to allow for overrides
    *
-   * @var $properties array
+   * @param $properties array
    */
   public function initialise($parameters)
   {
@@ -56,8 +56,8 @@ abstract class AbstractWorldpay {
   /**
    * Determines if this key has a setter or getter method
    *
-   * @var string $type ('get'|'set')
-   * @var string $key
+   * @param string $type ('get'|'set')
+   * @param string $key
    * @return bool
    */
   protected function hasMethod($type = 'get', $key)
@@ -72,7 +72,7 @@ abstract class AbstractWorldpay {
    *
    * Custom parameters begin with 'MC_' or 'C_'
    *
-   * @var string $key
+   * @param string $key
    * @return bool
    */
   protected function isCustomParam($key)
@@ -90,8 +90,8 @@ abstract class AbstractWorldpay {
    * Set the parameter if it has a setter method
    * or if it is a Custom parameter.
    *
-   * @var string $key
-   * @var mixed $value
+   * @param string $key
+   * @param mixed $value
    * @return void
    */
   protected function setParameter($key, $value)
@@ -113,7 +113,7 @@ abstract class AbstractWorldpay {
    * Get the parameter if it has a getter method
    * or if it is a Custom parameter
    *
-   * @var string $key
+   * @param string $key
    * @return string
    */
   protected function getParameter($key)
@@ -134,8 +134,8 @@ abstract class AbstractWorldpay {
    *
    * Called when an MC_ or C_ parameter is set
    *
-   * @var string $key
-   * @var string $value
+   * @param string $key
+   * @param string $value
    * @return void
    */
   protected function setCustomParam($key, $value)
@@ -148,7 +148,7 @@ abstract class AbstractWorldpay {
    *
    * Called when a MC_ or C_ parameter is requested
    *
-   * @var string $key
+   * @param string $key
    * @return string
    */
   protected function getCustomParam($key)
@@ -161,7 +161,7 @@ abstract class AbstractWorldpay {
    *
    * Your WorldPay Inst Id
    *
-   * @var string $value
+   * @param string $value
    * @return void
    */
   protected function setInstIdParameter($value)
@@ -174,7 +174,7 @@ abstract class AbstractWorldpay {
    *
    * Merchant reference
    *
-   * @var string $value
+   * @param string $value
    * @return void
    */
   protected function setCartIdParameter($value)
@@ -187,7 +187,7 @@ abstract class AbstractWorldpay {
    *
    * Should be set to 0 unless there is an immediate payment
    *
-   * @var decimal $value
+   * @param decimal $value
    * @return void
    */
   protected function setAmountParameter($value)
@@ -201,7 +201,7 @@ abstract class AbstractWorldpay {
    * Currency for the amounts specified in the agreement
    * and immediate payment if present
    *
-   * @var string $value
+   * @param string $value
    * @return void
    */
   protected function setCurrencyParameter($value)
@@ -212,7 +212,7 @@ abstract class AbstractWorldpay {
   /**
    * Set Name Parameter
    *
-   * @var string $value
+   * @param string $value
    * @return void
    */
   protected function setNameParameter($value)
@@ -223,7 +223,7 @@ abstract class AbstractWorldpay {
   /**
    * Set Town Parameter
    *
-   * @var string $value
+   * @param string $value
    * @return void
    */
   protected function setTownParameter($value)
@@ -234,7 +234,7 @@ abstract class AbstractWorldpay {
   /**
    * Set Postcode Parameter
    *
-   * @var string $value
+   * @param string $value
    * @return void
    */
   protected function setPostcodeParameter($value)
@@ -245,7 +245,7 @@ abstract class AbstractWorldpay {
   /**
    * Set Country Parameter
    *
-   * @var string $value
+   * @param string $value
    * @return void
    */
   protected function setCountryParameter($value)
@@ -256,7 +256,7 @@ abstract class AbstractWorldpay {
   /**
    * Set Email Parameter
    *
-   * @var string $value
+   * @param string $value
    * @return void
    */
   protected function setEmailParameter($value)
@@ -267,7 +267,7 @@ abstract class AbstractWorldpay {
   /**
    * Set Fax Parameter
    *
-   * @var string $value
+   * @param string $value
    * @return void
    */
   protected function setFaxParameter($value)
@@ -278,8 +278,8 @@ abstract class AbstractWorldpay {
   /**
    * Dynamically set attributes on the object
    *
-   * @var string $key
-   * @var string $value
+   * @param string $key
+   * @param string $value
    * @return void
    */
   public function __set($key, $value)
@@ -290,7 +290,7 @@ abstract class AbstractWorldpay {
   /**
    * Dynamically get attributes on the object
    *
-   * @var string $key
+   * @param string $key
    * @return string
    */
   public function __get($key)

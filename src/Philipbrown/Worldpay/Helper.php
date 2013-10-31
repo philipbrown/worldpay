@@ -7,7 +7,7 @@ class Helper {
    *
    * e.g hello_world -> helloWorld
    *
-   * @var string $str
+   * @param string $str
    * @return string
    */
   public static function camelise($str)
@@ -24,8 +24,8 @@ class Helper {
    *
    * e.g first_name -> getFirstNameParameter
    *
-   * @var string $type ('get'|'set')
-   * @var string $key
+   * @param string $type ('get'|'set')
+   * @param string $key
    * @return string
    */
   public static function convertParamMethodName($type = 'get', $key)

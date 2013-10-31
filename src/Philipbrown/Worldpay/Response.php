@@ -12,8 +12,8 @@ class Response extends AbstractWorldpay {
   /**
    * Construct
    *
-   * @var array $config
-   * @var array $parameters
+   * @param array $config
+   * @param array $parameters
    */
   public function __construct($config, $parameters)
   {
@@ -71,7 +71,7 @@ class Response extends AbstractWorldpay {
    *
    * Ensure the Callback Password is correct
    *
-   * @var string $password
+   * @param string $password
    * @return bool
    */
   public function isValid($password)
@@ -152,7 +152,7 @@ class Response extends AbstractWorldpay {
   /**
    * Set Test Mode Parameter
    *
-   * @var $value string
+   * @param $value string
    * @return void
    */
   protected function setTestModeParameter($value)
@@ -163,7 +163,7 @@ class Response extends AbstractWorldpay {
   /**
    * Set Callback Password Parameter
    *
-   * @var string $value
+   * @param string $value
    * @return void
    */
   protected function setCallbackPWParameter($value)
@@ -174,7 +174,7 @@ class Response extends AbstractWorldpay {
   /**
    * Set Transaction Status Parameter
    *
-   * @var string $value
+   * @param string $value
    * @return void
    */
   protected function setTransStatusParameter($value)
@@ -185,7 +185,7 @@ class Response extends AbstractWorldpay {
   /**
    * Set Transaction Id Parameter
    *
-   * @var string $string
+   * @param string $string
    * @return void
    */
   protected function setTransIdParameter($value)
@@ -196,7 +196,7 @@ class Response extends AbstractWorldpay {
   /**
    * Set IP Address Parameter
    *
-   * @var string $value
+   * @param string $value
    * @return void
    */
   protected function setIpAddressParameter($value)
@@ -207,7 +207,7 @@ class Response extends AbstractWorldpay {
   /**
    * Set Company Name Parameter
    *
-   * @var string $value
+   * @param string $value
    * @return void
    */
   protected function setCompNameParameter($value)
@@ -218,7 +218,7 @@ class Response extends AbstractWorldpay {
   /**
    * Set FuturePay Id Parameter
    *
-   * @var string $value
+   * @param string $value
    * @return void
    */
   protected function setFuturePayIdParameter($value)
@@ -229,7 +229,7 @@ class Response extends AbstractWorldpay {
   /**
    * Set Address Line 1 Parameter
    *
-   * @var string $value
+   * @param string $value
    * @return void
    */
   protected function setAddress1Parameter($value)
@@ -240,7 +240,7 @@ class Response extends AbstractWorldpay {
   /**
    * Set Address Line 2 Parameter
    *
-   * @var string $value
+   * @param string $value
    * @return void
    */
   protected function setAddress2Parameter($value)
@@ -251,7 +251,7 @@ class Response extends AbstractWorldpay {
   /**
    * Set Address Line 3 Parameter
    *
-   * @var string $value
+   * @param string $value
    * @return void
    */
   protected function setAddress3Parameter($value)
@@ -262,7 +262,7 @@ class Response extends AbstractWorldpay {
   /**
    * Set Desc Parameter
    *
-   * @var $value string
+   * @param $value string
    * @return void
    */
   protected function setDescParameter($value)
@@ -273,7 +273,7 @@ class Response extends AbstractWorldpay {
   /**
    * Set Tel Parameter
    *
-   * @var string $value
+   * @param string $value
    * @return void
    */
   protected function setTelParameter($value)
@@ -284,7 +284,7 @@ class Response extends AbstractWorldpay {
   /**
    * Set Country String Parameter
    *
-   * @var string $value
+   * @param string $value
    * @return void
    */
   protected function setCountryStringParameter($value)
@@ -295,7 +295,7 @@ class Response extends AbstractWorldpay {
   /**
    * Set Card Type Parameter
    *
-   * @var string $value
+   * @param string $value
    * @return void
    */
   protected function setCardTypeParameter($value)
@@ -336,7 +336,7 @@ class Response extends AbstractWorldpay {
   /**
    * Get Currency Parameter
    *
-   * @var string $value
+   * @param string $value
    * @return void
    */
   protected function getCurrencyParameter()
@@ -457,7 +457,7 @@ class Response extends AbstractWorldpay {
   /**
    * Get Card Type Parameter
    *
-   * @var string $value
+   * @param string $value
    * @return void
    */
   protected function getCardTypeParameter()
@@ -558,6 +558,7 @@ class Response extends AbstractWorldpay {
   /**
    * Fake WorldPay Request
    *
+   * @param array $parameters
    */
   protected function fakeWorldPayRequest($parameters)
   {
@@ -579,7 +580,7 @@ class Response extends AbstractWorldpay {
   /**
    * Is Fake FuturePay
    *
-   * @var array $parameters
+   * @param array $parameters
    * @return mixed
    */
   protected function isFakeFuturePay($parameters)

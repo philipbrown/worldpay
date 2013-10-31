@@ -32,8 +32,8 @@ class Request extends AbstractWorldpay {
   /**
    * Construct
    *
-   * @var array $config
-   * @var array $parameters
+   * @param array $config
+   * @param array $parameters
    * @return void
    */
   public function __construct($config, $parameters)
@@ -50,7 +50,7 @@ class Request extends AbstractWorldpay {
   /**
    * Set Secret
    *
-   * @var string $secret
+   * @param string $secret
    * @return void
    */
   public function setSecret($secret)
@@ -61,7 +61,7 @@ class Request extends AbstractWorldpay {
   /**
    * Set Signature Fields
    *
-   * @var array $fields
+   * @param array $fields
    * @return void
    */
   public function setSignatureFields($fields)
@@ -163,8 +163,8 @@ class Request extends AbstractWorldpay {
   /**
    * Get Signature Fields Data
    *
-   * @var array $fields
-   * @var array $data
+   * @param array $fields
+   * @param array $data
    * @return array
    */
   protected function getSignatureFieldsData($fields, $data)
@@ -226,7 +226,7 @@ class Request extends AbstractWorldpay {
   /**
    * Set Environment Parameter
    *
-   * @var string $value
+   * @param string $value
    * @return void
    */
   protected function setEnvironmentParameter($value)
@@ -239,7 +239,7 @@ class Request extends AbstractWorldpay {
    *
    * The description of this transaction for your reference
    *
-   * @var string $value
+   * @param string $value
    * @return void
    */
   protected function setDescriptionParameter($value)
@@ -250,7 +250,7 @@ class Request extends AbstractWorldpay {
   /**
    * Set Address Line 1 Parameter
    *
-   * @var string $value
+   * @param string $value
    * @return void
    */
   protected function setAddressLine1Parameter($value)
@@ -261,7 +261,7 @@ class Request extends AbstractWorldpay {
   /**
    * Set Address Line 2 Parameter
    *
-   * @var string $value
+   * @param string $value
    * @return void
    */
   protected function setAddressLine2Parameter($value)
@@ -272,7 +272,7 @@ class Request extends AbstractWorldpay {
   /**
    * Set Address Line 3 Parameter
    *
-   * @var string $value
+   * @param string $value
    * @return void
    */
   protected function setAddressLine3Parameter($value)
@@ -283,7 +283,7 @@ class Request extends AbstractWorldpay {
   /**
    * Set Telephone Parameter
    *
-   * @var string $value
+   * @param string $value
    * @return void
    */
   protected function setTelephoneParameter($value)
@@ -296,7 +296,7 @@ class Request extends AbstractWorldpay {
    *
    * Required for FuturePay transactions.
    *
-   * @var string $value
+   * @param string $value
    * @return void
    */
   protected function setFuturePayTypeParameter($value)
@@ -316,7 +316,7 @@ class Request extends AbstractWorldpay {
    *
    * Required for FuturePay transactions.
    *
-   * @var int $value
+   * @param int $value
    * @return void
    */
   protected function setOptionParameter($value)
@@ -336,7 +336,7 @@ class Request extends AbstractWorldpay {
    *
    * Format: yyyy-mm-dd.
    *
-   * @var string $value
+   * @param string $value
    * @return void
    */
   protected function setStartDateParameter($value)
@@ -361,7 +361,7 @@ class Request extends AbstractWorldpay {
    * Leave unset for unlimited payments.
    * Must be a positive integer.
    *
-   * @var int $value
+   * @param int $value
    * @return void
    */
   protected function setNumberOfPaymentsParameter($value)
@@ -405,7 +405,7 @@ class Request extends AbstractWorldpay {
    *           Option 2 - Must not be set
    *           Option 3 - Must always be set to 1
    *
-   * @var string $value
+   * @param string $value
    * @return void
    */
   protected function setIntervalParameter($value)
@@ -429,7 +429,7 @@ class Request extends AbstractWorldpay {
    * Option 1 - Optional
    * Option 2 - Cannot be set
    *
-   * @var decimal $value
+   * @param decimal $value
    * @return void
    */
   protected function setInitialAmountParameter($value)
@@ -448,7 +448,7 @@ class Request extends AbstractWorldpay {
    * Option 1 - Required
    * Option 2 - Cannot be set. You have to set it before each payment.
    *
-   * @var decimal $value
+   * @param decimal $value
    * @return void
    */
   protected function setNormalAmountParameter($value)
@@ -472,7 +472,7 @@ class Request extends AbstractWorldpay {
    * Option 3 - Payment amount limit for interval period
    *            Must be set to a value greater than zero
    *
-   * @var decimal $value
+   * @param decimal $value
    * @return void
    */
   protected function setAmountLimitParameter($value)
@@ -488,7 +488,7 @@ class Request extends AbstractWorldpay {
    * Only required for 'limited' Agreement Type
    *
    * Format: yyyy-mm-dd
-   * @var string $value
+   * @param string $value
    * @return void
    */
   protected function setEndDateParameter($value)
