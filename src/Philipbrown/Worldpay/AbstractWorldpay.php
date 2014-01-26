@@ -1,8 +1,8 @@
-<?php namespace Philipbrown\Worldpay;
+<?php namespace PhilipBrown\WorldPay;
 
 use Symfony\Component\HttpFoundation\ParameterBag;
 
-abstract class AbstractWorldpay {
+abstract class AbstractWorldPay {
 
   /**
    * @var Symfony\Component\HttpFoundation\ParameterBag;

@@ -1,10 +1,10 @@
-<?php namespace Philipbrown\Worldpay;
+<?php namespace PhilipBrown\WorldPay;
 
 use Carbon\Carbon;
 use Symfony\Component\HttpFoundation\RedirectResponse as HttpRedirectResponse;
-use Philipbrown\Worldpay\Exceptions\InvalidRequestException as InvalidRequestException;
+use PhilipBrown\WorldPay\Exceptions\InvalidRequestException as InvalidRequestException;
 
-class Request extends AbstractWorldpay {
+class Request extends AbstractWorldPay {
 
   /**
    * @var array

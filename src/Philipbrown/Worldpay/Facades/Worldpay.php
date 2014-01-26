@@ -1,8 +1,8 @@
-<?php namespace Philipbrown\Worldpay\Facades;
+<?php namespace PhilipBrown\WorldPay\Facades;
 
 use Illuminate\Support\Facades\Facade;
 
-class Worldpay extends Facade {
+class WorldPay extends Facade {
 
   /**
    * Get the registered name of the component.

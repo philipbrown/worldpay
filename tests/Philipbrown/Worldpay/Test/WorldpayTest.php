@@ -1,22 +1,22 @@
-<?php namespace Philipbrown\Worldpay\Test;
+<?php namespace Philipbrown\WorldPay\Test;
 
-use Philipbrown\Worldpay\Worldpay;
+use PhilipBrown\WorldPay\WorldPay;
 
-class WorldpayTest extends TestCase {
+class WorldPayTest extends TestCase {
 
   public function testRequestInstantiation()
   {
-    $this->assertInstanceOf('Philipbrown\Worldpay\Request', $this->getWorldpay()->request($this->getNormalRequest()));
+    $this->assertInstanceOf('PhilipBrown\WorldPay\Request', $this->getWorldPay()->request($this->getNormalRequest()));
   }
 
   public function testResponseInstantiation()
   {
-    $this->assertInstanceOf('Philipbrown\Worldpay\Response', $this->getWorldpay()->response($this->getNormalResponse()));
+    $this->assertInstanceOf('PhilipBrown\WorldPay\Response', $this->getWorldPay()->response($this->getNormalResponse()));
   }
 
   public function testCallbackURL()
   {
-    $wp = $this->getWorldpay();
+    $wp = $this->getWorldPay();
     $request = $wp->request(array(
       'instId' => '123456',
       'cartId' => 'my_shop',
@@ -29,7 +29,7 @@ class WorldpayTest extends TestCase {
 
   public function testEnvironementCallbackURL()
   {
-    $wp = $this->getWorldpay(array(
+    $wp = $this->getWorldPay(array(
       'env' => 'local',
       'url' => 'example.local/callbacks/worldpay'
     ));

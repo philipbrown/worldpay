@@ -1,6 +1,6 @@
-<?php namespace Philipbrown\Worldpay;
+<?php namespace PhilipBrown\WorldPay;
 
-class Worldpay {
+class WorldPay {
 
   /**
    * @var array
@@ -21,7 +21,7 @@ class Worldpay {
   /**
    * Request
    *
-   * @return Worldpay\Request
+   * @return WorldPay\Request
    */
   public function request($parameters = null)
   {
@@ -31,7 +31,7 @@ class Worldpay {
   /**
    * Response
    *
-   * @return Worldpay\Response
+   * @return WorldPay\Response
    */
   public function response($parameters = null)
   {

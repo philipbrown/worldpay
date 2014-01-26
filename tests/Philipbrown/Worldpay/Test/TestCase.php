@@ -1,6 +1,6 @@
-<?php namespace Philipbrown\Worldpay\Test;
+<?php namespace PhilipBrown\WorldPay\Test;
 
-use Philipbrown\Worldpay\Worldpay;
+use PhilipBrown\WorldPay\WorldPay;
 use PHPUnit_Framework_TestCase;
 use Carbon\Carbon;
 
@@ -8,7 +8,7 @@ class TestCase extends PHPUnit_Framework_TestCase {
 
   public function getWorldPay($options = array('env' => 'development'))
   {
-    $wp = new Worldpay;
+    $wp = new WorldPay;
     $wp->setConfig($options);
     return $wp;
   }

@@ -1,4 +1,4 @@
-<?php namespace Philipbrown\Worldpay\Exceptions;
+<?php namespace PhilipBrown\WorldPay\Exceptions;
 
 use Exception;
 

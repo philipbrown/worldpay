@@ -1,8 +1,8 @@
-<?php namespace Philipbrown\Worldpay;
+<?php namespace PhilipBrown\WorldPay;
 
 use Carbon\Carbon;
 
-class Response extends AbstractWorldpay {
+class Response extends AbstractWorldPay {
 
   /**
    * @var array

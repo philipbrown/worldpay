@@ -1,4 +1,4 @@
-<?php namespace Philipbrown\Worldpay;
+<?php namespace PhilipBrown\WorldPay;
 
 class Translate {
 

@@ -1,8 +1,8 @@
-<?php namespace Philipbrown\Worldpay;
+<?php namespace Philipbrown\WorldPay;
 
 use Illuminate\Support\ServiceProvider;
 
-class WorldpayServiceProvider extends ServiceProvider {
+class WorldPayServiceProvider extends ServiceProvider {
 
   /**
    * Indicates if loading of the provider is deferred.
@@ -30,12 +30,12 @@ class WorldpayServiceProvider extends ServiceProvider {
   {
     $this->app['worldpay'] = $this->app->share(function($app)
     {
-      return new Worldpay;
+      return new WorldPay;
     });
     $this->app->booting(function()
     {
       $loader = \Illuminate\Foundation\AliasLoader::getInstance();
-      $loader->alias('Worldpay', 'Philipbrown\Worldpay\Facades\Worldpay');
+      $loader->alias('WorldPay', 'PhilipBrown\WorldPay\Facades\WorldPay');
     });
   }
 
@@ -46,7 +46,7 @@ class WorldpayServiceProvider extends ServiceProvider {
    */
   public function provides()
   {
-    return array('Worldpay');
+    return array('WorldPay');
   }
 
 }

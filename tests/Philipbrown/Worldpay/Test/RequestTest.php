@@ -1,12 +1,12 @@
-<?php namespace Philipbrown\Worldpay\Test;
+<?php namespace PhilipBrown\WorldPay\Test;
 
-use Philipbrown\Worldpay;
+use PhilipBrown\WorldPay;
 
 class RequestTest extends TestCase {
 
   public function testSettingRequestParameters()
   {
-    $wp = $this->getWorldpay();
+    $wp = $this->getWorldPay();
     $request = $wp->request($this->getNormalRequest());
     $r = $request->prepare();
     $this->assertEquals('123456789', $r['data']['instId']);
@@ -30,7 +30,7 @@ class RequestTest extends TestCase {
 
   public function testSettingFuturePayRequestParameters()
   {
-    $wp = $this->getWorldpay();
+    $wp = $this->getWorldPay();
     $request = $wp->request($this->getFuturePayRequest());
     $r = $request->prepare();
     $this->assertEquals('regular', $r['data']['futurePayType']);
@@ -44,7 +44,7 @@ class RequestTest extends TestCase {
 
   public function testSignature()
   {
-    $wp = $this->getWorldpay();
+    $wp = $this->getWorldPay();
     $request = $wp->request($this->getNormalRequest());
     $request->setSecret('my_secret');
     $r = $request->prepare();
@@ -53,7 +53,7 @@ class RequestTest extends TestCase {
 
   public function testSignatureWithCustomFields()
   {
-    $wp = $this->getWorldpay();
+    $wp = $this->getWorldPay();
     $request = $wp->request($this->getNormalRequest());
     $request->setSecret('my_secret');
     $request->setSignatureFields(array('email'));
@@ -63,17 +63,17 @@ class RequestTest extends TestCase {
 
   public function testNormalRequestSend()
   {
-    $wp = $this->getWorldpay();
+    $wp = $this->getWorldPay();
     $this->assertInstanceOf('Symfony\Component\HttpFoundation\RedirectResponse', $wp->request($this->getNormalRequest())->send());
   }
 
   /**
-   * @expectedException        Philipbrown\Worldpay\Exceptions\InvalidRequestException
+   * @expectedException        PhilipBrown\WorldPay\Exceptions\InvalidRequestException
    * @expectedExceptionMessage Invalid FuturePay type
    */
   public function testInvalidFuturePayTypeException()
   {
-    $wp = $this->getWorldpay();
+    $wp = $this->getWorldPay();
     $request = $wp->request(array(
       'futurepay_type' => 'oh noes'
     ));
@@ -81,12 +81,12 @@ class RequestTest extends TestCase {
   }
 
   /**
-   * @expectedException        Philipbrown\Worldpay\Exceptions\InvalidRequestException
+   * @expectedException        PhilipBrown\WorldPay\Exceptions\InvalidRequestException
    * @expectedExceptionMessage You need to set a callback URL
    */
   public function testMissingCallbackURLException()
   {
-    $wp = $this->getWorldpay(array(
+    $wp = $this->getWorldPay(array(
       'env' => 'local'
     ));
     $request = $wp->request(array());
@@ -94,12 +94,12 @@ class RequestTest extends TestCase {
   }
 
   /**
-   * @expectedException        Philipbrown\Worldpay\Exceptions\InvalidRequestException
+   * @expectedException        PhilipBrown\WorldPay\Exceptions\InvalidRequestException
    * @expectedExceptionMessage The start date must be in the future
    */
   public function testStartDateInThePastException()
   {
-    $wp = $this->getWorldpay();
+    $wp = $this->getWorldPay();
     $request = $wp->request(array(
       'start_date' => 'yesterday'
     ));
@@ -107,12 +107,12 @@ class RequestTest extends TestCase {
   }
 
   /**
-   * @expectedException        Philipbrown\Worldpay\Exceptions\InvalidRequestException
+   * @expectedException        PhilipBrown\WorldPay\Exceptions\InvalidRequestException
    * @expectedExceptionMessage The number of payments must greater than 0
    */
   public function testNumberOfPaymentsException()
   {
-    $wp = $this->getWorldpay();
+    $wp = $this->getWorldPay();
     $request = $wp->request(array(
       'number_of_payments' => 0
     ));
@@ -120,12 +120,12 @@ class RequestTest extends TestCase {
   }
 
   /**
-   * @expectedException        Philipbrown\Worldpay\Exceptions\InvalidRequestException
+   * @expectedException        PhilipBrown\WorldPay\Exceptions\InvalidRequestException
    * @expectedExceptionMessage The end date must be in the future
    */
   public function testEndDateInThePastException()
   {
-    $wp = $this->getWorldpay();
+    $wp = $this->getWorldPay();
     $request = $wp->request(array(
       'end_date' => 'yesterday'
     ));
