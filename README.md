@@ -17,7 +17,7 @@ Add `philipbrown/worldpay` as a requirement to `composer.json`:
 ```json
 {
   "require": {
-    "philipbrown/worldpay": "dev-master"
+    "philipbrown/worldpay": "1.0.*"
   }
 }
 ```
@@ -36,7 +36,7 @@ This WorldPay package allows you to easily create a new **Request** and capture 
 Creating a new request is as simple as instantiating a new ```Request``` object and passing it your transaction details.
 ```php
 // Get a new WorldPay object
-$wp = new Philipbrown\Worldpay\Worldpay;
+$wp = new PhilipBrown\WorldPay\WorldPay;
 
 // Create a Request
 $request = $wp->request(array(
@@ -54,7 +54,7 @@ $request->send();
 WorldPay will send a ```POST``` request to your server with details of the transaction. You simply need to capture this request and pass it to the ```Response``` object.
 ```php
 // Get a new WorldPay object
-$wp = new Philipbrown\Worldpay\Worldpay;
+$wp = new PhilipBrown\WorldPay\WorldPay;
 
 // Pass the $_POST to the Response object
 $response = $wp->response($_POST);
@@ -101,12 +101,12 @@ If you are using Laravel 4, setting up Worldpay is really simple.
 
 Once you have installed the packaged throught composer, add the following line to your list of Service Providers:
 ```php
-'Philipbrown\Worldpay\WorldpayServiceProvider'
+'PhilipBrown\WorldPay\WorldPayServiceProvider'
 ```
 
 You can now use access WorldPay using Laravel Facades:
 ```php
-$request = Worldpay::request(array());
+$request = WorldPay::request(array());
 ```
 
 Setting up your different environment configuration is also really simple.
@@ -381,7 +381,7 @@ To set your callback URL, log in to your WorldPay account, choose the installati
 To capture a response, simply pass the ```POST``` request to the ```response``` method:
 ```php
 // Get a new WorldPay object
-$wp = new Philipbrown\Worldpay\Worldpay;
+$wp = new PhilipBrown\WorldPay\WorldPay;
 
 // Pass the $_POST to the Response object
 $response = $wp->response($_POST);
