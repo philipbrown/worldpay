@@ -17,7 +17,7 @@ Add `philipbrown/worldpay` as a requirement to `composer.json`:
 ```json
 {
   "require": {
-    "philipbrown/worldpay": "1.0.*"
+    "philipbrown/worldpay": "1.*"
   }
 }
 ```
