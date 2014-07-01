@@ -31,7 +31,6 @@ class ResponseTest extends TestCase {
     $this->assertEquals('123', $r->MC_customer_id);
     $this->assertEquals('United Kingdom', $r->country_string);
     $this->assertInstanceOf('Carbon\Carbon', $r->timestamp);
-    $this->assertEquals($this->getToday(), $r->timestamp);
   }
 
   public function testResponseHelperMethods()
