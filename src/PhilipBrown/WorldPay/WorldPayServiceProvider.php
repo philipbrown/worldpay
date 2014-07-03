@@ -1,5 +1,6 @@
 <?php namespace Philipbrown\WorldPay;
 
+use Illuminate\Support\Facades\Config;
 use Illuminate\Support\ServiceProvider;
 
 class WorldPayServiceProvider extends ServiceProvider {
@@ -30,7 +31,9 @@ class WorldPayServiceProvider extends ServiceProvider {
   {
     $this->app['worldpay'] = $this->app->share(function($app)
     {
-      return new WorldPay;
+      $wp = new PhilipBrown\WorldPay\WorldPay;
+
+      $wp->setConfig(Config::get('worldpay'));
     });
     $this->app->booting(function()
     {
