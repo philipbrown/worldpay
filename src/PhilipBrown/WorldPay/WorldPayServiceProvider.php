@@ -1,5 +1,6 @@
-<?php namespace Philipbrown\WorldPay;
+<?php namespace PhilipBrown\WorldPay;
 
+use Illuminate\Foundation\AliasLoader;
 use Illuminate\Support\Facades\Config;
 use Illuminate\Support\ServiceProvider;
 
@@ -31,13 +32,13 @@ class WorldPayServiceProvider extends ServiceProvider {
   {
     $this->app['worldpay'] = $this->app->share(function($app)
     {
-      $wp = new PhilipBrown\WorldPay\WorldPay;
+      $wp = new WorldPay;
 
       $wp->setConfig(Config::get('worldpay'));
     });
     $this->app->booting(function()
     {
-      $loader = \Illuminate\Foundation\AliasLoader::getInstance();
+      $loader = AliasLoader::getInstance();
       $loader->alias('WorldPay', 'PhilipBrown\WorldPay\Facades\WorldPay');
     });
   }
