@@ -35,7 +35,10 @@ class WorldPayServiceProvider extends ServiceProvider {
       $wp = new WorldPay;
 
       $wp->setConfig(Config::get('worldpay'));
+
+      return $wp;
     });
+
     $this->app->booting(function()
     {
       $loader = AliasLoader::getInstance();
