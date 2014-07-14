@@ -37,7 +37,7 @@ class ResponseTest extends TestCase {
   {
     $wp = $this->getWorldPay();
     $r = $wp->response($this->getNormalResponse());
-    $this->assertEquals(true, $r->isValid('password_123'));
+    $this->assertEquals(true, $r->isValid());
     $this->assertEquals(true, $r->isSuccess());
     $this->assertEquals(false, $r->isCancelled());
     $this->assertEquals(false, $r->isFuturePay());

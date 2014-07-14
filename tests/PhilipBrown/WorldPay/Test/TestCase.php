@@ -6,7 +6,7 @@ use Carbon\Carbon;
 
 class TestCase extends PHPUnit_Framework_TestCase {
 
-  public function getWorldPay($options = array('env' => 'development'))
+  public function getWorldPay($options = array('env' => 'development', 'password' => 'password_123'))
   {
     $wp = new WorldPay;
     $wp->setConfig($options);
@@ -50,7 +50,7 @@ class TestCase extends PHPUnit_Framework_TestCase {
   public function getNormalResponse()
   {
     return array(
-      'testMode'      => '100',
+      'testMode'      => 100,
       'callbackPW'    => 'password_123',
       'transStatus'   => 'Y',
       'transId'       => '123456789',

@@ -71,12 +71,11 @@ class Response extends AbstractWorldPay {
    *
    * Ensure the Callback Password is correct
    *
-   * @param string $password
    * @return bool
    */
-  public function isValid($password)
+  public function isValid()
   {
-    return $this->getPasswordParameter() == $password;
+    return $this->getPasswordParameter() === $this->config['password'];
   }
 
   /**
@@ -88,7 +87,7 @@ class Response extends AbstractWorldPay {
    */
   public function isSuccess()
   {
-    return $this->getTransactionStatusParameter() == 'Y';
+    return $this->getTransactionStatusParameter() === 'Y';
   }
 
   /**
@@ -100,7 +99,7 @@ class Response extends AbstractWorldPay {
    */
   public function isCancelled()
   {
-    return $this->getTransactionStatusParameter() == 'C';
+    return $this->getTransactionStatusParameter() === 'C';
   }
 
   /**
@@ -112,7 +111,7 @@ class Response extends AbstractWorldPay {
    */
   public function isFuturePay()
   {
-    return $this->getFuturePayIdParameter() != null;
+    return $this->getFuturePayIdParameter() !== null;
   }
 
   /**
@@ -124,7 +123,7 @@ class Response extends AbstractWorldPay {
    */
   public function isProduction()
   {
-    return $this->getTestModeParameter() == 0;
+    return $this->getTestModeParameter() === 0;
   }
 
   /**
@@ -136,7 +135,7 @@ class Response extends AbstractWorldPay {
    */
   public function isDevelopment()
   {
-    return $this->getTestModeParameter() == 100;
+    return $this->getTestModeParameter() === 100;
   }
 
   /**
