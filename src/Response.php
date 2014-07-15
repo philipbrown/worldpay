@@ -1,5 +1,7 @@
 <?php namespace PhilipBrown\WorldPay;
 
+use Exception;
+
 class Response {
 
   /**
