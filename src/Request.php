@@ -93,7 +93,7 @@ class Request {
    * @return void
    */
   public function __construct(
-    $env,
+    Environment $env,
     $instId,
     $cartId,
     $currency,
@@ -142,7 +142,7 @@ class Request {
   {
     return RedirectResponse::create(
       $this->getEndPoint() .
-      '?signature='.$this->getSignature().'&'.http_build_query($this->getRequestParameters())
+      '?signature='.$this->getSignature().'&'.http_build_query($this->getParameters())
     )->send();
   }
 
@@ -156,7 +156,7 @@ class Request {
     $request = new StdClass;
     $request->endpoint = $this->getEndPoint();
     $request->signature = $this->getSignature();
-    $request->data = $this->getRequestParameters();
+    $request->data = $this->getParameters();
 
     return $request;
   }
@@ -166,13 +166,14 @@ class Request {
    *
    * @return array
    */
-  public function getRequestParameters()
+  public function getParameters()
   {
     return array_merge([
       'instId'    => $this->instId,
       'cartId'    => $this->cartId,
       'currency'  => $this->currency,
-      'amount'    => $this->amount
+      'amount'    => $this->amount,
+      'testMode'  => $this->env->asInt()
       ],
       $this->parameters
     );
@@ -185,9 +186,9 @@ class Request {
    */
   public function getEndPoint()
   {
-    if(isset($this->endpoints[$this->env]))
+    if(isset($this->endpoints[$this->env->asString()]))
     {
-      return $this->endpoints[$this->env];
+      return $this->endpoints[$this->env->asString()];
     }
 
     if($this->callback)

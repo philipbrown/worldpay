@@ -1,6 +1,7 @@
 <?php
 
 use PhilipBrown\WorldPay\Request;
+use PhilipBrown\WorldPay\Environment;
 
 class RequestTest extends PHPUnit_Framework_TestCase {
 
@@ -19,7 +20,7 @@ class RequestTest extends PHPUnit_Framework_TestCase {
    */
   public function testMissingCallbackExcpetion()
   {
-    $request = new Request('testing','1234','Amazong','GBP','9.99','super_secret',['name' => 'Philip Brown']);
+    $request = new Request(new Environment('testing'),'1234','Amazong','GBP','9.99','super_secret',['name' => 'Philip Brown']);
     $request->getEndPoint();
   }
 
@@ -42,8 +43,9 @@ class RequestTest extends PHPUnit_Framework_TestCase {
       'cartId' => 'Amazong',
       'currency' => 'GBP',
       'amount' => '9.99',
-      'name' => 'Philip Brown'
-    ], $this->standard()->getRequestParameters());
+      'name' => 'Philip Brown',
+      'testMode' => 0
+    ], $this->standard()->getParameters());
   }
 
   public function testSendRequest()
@@ -61,14 +63,15 @@ class RequestTest extends PHPUnit_Framework_TestCase {
       'cartId' => 'Amazong',
       'currency' => 'GBP',
       'amount' => '9.99',
-      'name' => 'Philip Brown'
+      'name' => 'Philip Brown',
+      'testMode' => 0
     ], $request->data);
   }
 
   protected function standard()
   {
     return new Request(
-      'production',
+      new Environment('production'),
       '1234',
       'Amazong',
       'GBP',
@@ -81,7 +84,7 @@ class RequestTest extends PHPUnit_Framework_TestCase {
   protected function custom()
   {
     return new Request(
-      'testing',
+      new Environment('testing'),
       '1234',
       'Amazong',
       'GBP',
