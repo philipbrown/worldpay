@@ -9,8 +9,8 @@ before_script:
   - composer install --no-interaction --prefer-source --dev
 
 script:
-  - vendor/bin/phpunit --verbose --coverage-clover build/logs/clover.xml
+  - phpunit --coverage-clover=coverage.clover
 
 after_script:
   - wget https://scrutinizer-ci.com/ocular.phar
-  - php ocular.phar code-coverage:upload --format=php-clover build/logs/clover.xml
+  - php ocular.phar code-coverage:upload --format=php-clover coverage.clover
