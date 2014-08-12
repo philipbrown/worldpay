@@ -1,12 +1,12 @@
 <?php
 
+use PhilipBrown\WorldPay\Route;
 use PhilipBrown\WorldPay\Money;
 use PhilipBrown\WorldPay\InstId;
 use PhilipBrown\WorldPay\CartId;
 use PhilipBrown\WorldPay\Secret;
 use PhilipBrown\WorldPay\Request;
 use PhilipBrown\WorldPay\Currency;
-use PhilipBrown\WorldPay\Callback;
 use PhilipBrown\WorldPay\Environment;
 
 class RequestTest extends PHPUnit_Framework_TestCase {
@@ -28,7 +28,7 @@ class RequestTest extends PHPUnit_Framework_TestCase {
   {
     $prepared = $this->createDevelopmentEnvironmentRequest()->prepare();
 
-    $this->assertEquals('https://secure-test.worldpay.com/wcc/purchase', $prepared->endpoint);
+    $this->assertEquals('https://secure-test.worldpay.com/wcc/purchase', $prepared->route);
   }
 
   /** @test */
@@ -36,7 +36,7 @@ class RequestTest extends PHPUnit_Framework_TestCase {
   {
     $prepared = $this->createTestingEnvironmentRequest()->prepare();
 
-    $this->assertEquals('http://shop.test/callbacks/worldpay', $prepared->endpoint);
+    $this->assertEquals('http://shop.test/callbacks/worldpay', $prepared->route);
   }
 
   /** @test */
@@ -80,14 +80,6 @@ class RequestTest extends PHPUnit_Framework_TestCase {
     $this->assertInstanceOf('Symfony\Component\HttpFoundation\RedirectResponse', $response);
   }
 
-  /** @test */
-  public function a_custom_environment_without_a_callback_should_throw_exception()
-  {
-    $this->setExpectedException('PhilipBrown\WorldPay\InvalidRequestException');
-
-    $this->createCustomEnvironmentWithoutCallback()->prepare();
-  }
-
   public function createTestingEnvironmentRequest()
   {
     return new Request(
@@ -97,8 +89,8 @@ class RequestTest extends PHPUnit_Framework_TestCase {
       Secret::set('my secret'),
       Money::set(1000),
       Currency::set('GB'),
-      ['name' => 'Philip Brown'],
-      Callback::set('http://shop.test/callbacks/worldpay')
+      Route::set('http://shop.test/callbacks/worldpay'),
+      ['name' => 'Philip Brown']
     );
   }
 
@@ -111,19 +103,8 @@ class RequestTest extends PHPUnit_Framework_TestCase {
       Secret::set('my secret'),
       Money::set(1000),
       Currency::set('GB'),
+      Route::set('https://secure-test.worldpay.com/wcc/purchase'),
       []
-    );
-  }
-
-  public function createCustomEnvironmentWithoutCallback()
-  {
-    return new Request(
-      Environment::set('testing'),
-      InstId::set('123'),
-      CartId::set('My shop'),
-      Secret::set('my secret'),
-      Money::set(1000),
-      Currency::set('GB')
     );
   }
 

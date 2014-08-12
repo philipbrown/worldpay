@@ -1,16 +1,16 @@
 <?php
 
-use PhilipBrown\WorldPay\Callback;
+use PhilipBrown\WorldPay\Route;
 
-class CallbackTest extends PHPUnit_Framework_TestCase {
+class RouteTest extends PHPUnit_Framework_TestCase {
 
   /** @test */
-  public function should_create_a_new_callback()
+  public function should_create_a_new_route()
   {
-    $callback = Callback::set('http://shop.com/callbacks/worldpay');
+    $route = Route::set('http://shop.com/callbacks/worldpay');
 
-    $this->assertInstanceOf('PhilipBrown\WorldPay\Callback', $callback);
-    $this->assertEquals('http://shop.com/callbacks/worldpay', (string) $callback);
+    $this->assertInstanceOf('PhilipBrown\WorldPay\Route', $route);
+    $this->assertEquals('http://shop.com/callbacks/worldpay', (string) $route);
   }
 
   /** @test */
@@ -18,7 +18,7 @@ class CallbackTest extends PHPUnit_Framework_TestCase {
   {
     $this->setExpectedException('Assert\AssertionFailedException');
 
-    $callback = Callback::set('...');
+    $route = Route::set('...');
   }
 
 }

@@ -2,7 +2,7 @@
 
 use Assert\Assertion;
 
-class Callback {
+class Route {
 
   /**
    * @var string
@@ -21,18 +21,18 @@ class Callback {
   }
 
   /**
-   * Set the Callback
+   * Set the Route
    *
    * @param string $url
-   * @return PhilipBrown\WorldPay\Callback
+   * @return PhilipBrown\WorldPay\Route
    */
   public static function set($url)
   {
-    return new Callback($url);
+    return new Route($url);
   }
 
   /**
-   * Return the Callback when cast to string
+   * Return the Route when cast to string
    *
    * @return string
    */

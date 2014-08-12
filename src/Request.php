@@ -36,9 +36,9 @@ class Request {
   private $currency;
 
   /**
-   * @var PhilipBrown\WorldPay\Callback
+   * @var PhilipBrown\WorldPay\Route
    */
-  private $callback;
+  private $route;
 
   /**
    * @var array
@@ -51,14 +51,6 @@ class Request {
   private $defaultSignatureFields = ['instId', 'cartId', 'currency', 'amount'];
 
   /**
-   * @var array
-   */
-  private $defaultWorldPayEndPoints = [
-    'production'  => 'https://secure.worldpay.com/wcc/purchase',
-    'development' => 'https://secure-test.worldpay.com/wcc/purchase'
-  ];
-
-  /**
    * Create a new Request
    *
    * @param PhilipBrown\WorldPay\Environment $environment
@@ -67,7 +59,7 @@ class Request {
    * @param PhilipBrown\WorldPay\Secret $secret
    * @param PhilipBrown\WorldPay\Money $amount
    * @param PhilipBrown\WorldPay\Currency $currency
-   * @param PhilipBrown\WorldPay\Callback $callback
+   * @param PhilipBrown\WorldPay\Route $route
    * @param array $parameters
    * @return void
    */
@@ -78,8 +70,8 @@ class Request {
     Secret $secret,
     Money $amount,
     Currency $currency,
-    array $parameters = [],
-    $callback = null
+    Route $route,
+    array $parameters = []
   )
   {
     $this->environment = $environment;
@@ -89,7 +81,7 @@ class Request {
     $this->amount = $amount;
     $this->currency = $currency;
     $this->parameters = $parameters;
-    $this->callback = $callback;
+    $this->route = $route;
   }
 
   /**
@@ -114,7 +106,7 @@ class Request {
   {
     $request = $this->prepare();
 
-    $url = $request->endpoint.'?signature='.$request->signature.'&'.http_build_query($request->data);
+    $url = $request->route.'?signature='.$request->signature.'&'.http_build_query($request->data);
 
     return RedirectResponse::create($url)->send();
   }
@@ -126,12 +118,11 @@ class Request {
    */
   public function prepare()
   {
-    $request = new StdClass;
-    $request->endpoint = $this->getEndPointForEnvironment();
-    $request->signature = $this->prepareTheHashedSignature();
-    $request->data = $this->getTheRequestParameters();
-
-    return $request;
+    return new Body(
+      (string) $this->route,
+      $this->generateSignature(),
+      $this->getTheRequestParameters()
+    );
   }
 
   /**
@@ -145,31 +136,11 @@ class Request {
   }
 
   /**
-   * Return the End Point for the current Environment
+   * Generate the signature
    *
    * @return string
    */
-  private function getEndPointForEnvironment()
-  {
-    if ($this->isDefaultEnvironment())
-    {
-      return $this->defaultWorldPayEndPoints[(string) $this->environment];
-    }
-
-    if($this->callback and $this->callback instanceOf Callback)
-    {
-      return $this->callback;
-    }
-
-    throw new InvalidRequestException('A callback URL must be defined for a custom environment!');
-  }
-
-  /**
-   * Prepare the hashed signature
-   *
-   * @return string
-   */
-  private function prepareTheHashedSignature()
+  private function generateSignature()
   {
     $defaults = [
       'instId'    => $this->instId,
