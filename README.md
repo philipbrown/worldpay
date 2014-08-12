@@ -3,6 +3,9 @@
 **A PHP 5.4+ wrapper for the [WorldPay](http://worldpay.com) payment gateway.**
 
 [![Build Status](https://travis-ci.org/philipbrown/worldpay.png?branch=master)](https://travis-ci.org/philipbrown/worldpay)
+[![Code Coverage](https://scrutinizer-ci.com/g/philipbrown/worldpay/badges/coverage.png?b=master)](https://scrutinizer-ci.com/g/philipbrown/worldpay/?branch=master)
+[![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/philipbrown/worldpay/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/philipbrown/worldpay/?branch=master)
+
 
 WorldPay is an easy to use payment gateway that is widely recognised and trusted. However, just about everything about the service is out of date. One of the most frustrating things about using WorldPay is the woeful lack of good documentation or official libraries. The result of this is, WorldPay's documentation is fragmented or incomplete and code examples are completely inadequate.
 

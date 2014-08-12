@@ -6,19 +6,16 @@ class Body {
 
   /**
    * @var string
-   * @property
    */
   private $route;
 
   /**
    * @var string
-   * @property
    */
   private $signature;
 
   /**
    * @var array
-   * @property
    */
   private $data;
 
