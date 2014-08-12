@@ -19,12 +19,12 @@ class Currency {
    */
   private function __construct($name)
   {
-    if ( ! isset(static::$currencies))
+    if ( ! isset(self::$currencies))
     {
-      static::$currencies = require __DIR__.'/currencies.php';
+      self::$currencies = require __DIR__.'/currencies.php';
     }
 
-    Assertion::keyExists(static::$currencies, $name);
+    Assertion::keyExists(self::$currencies, $name);
 
     $this->name = $name;
   }
