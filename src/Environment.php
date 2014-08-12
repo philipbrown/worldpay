@@ -24,7 +24,7 @@ class Environment {
    * Set the Environment
    *
    * @param string $env
-   * @return PhilipBrown\WorldPay\Environment
+   * @return Environment
    */
   public static function set($env)
   {

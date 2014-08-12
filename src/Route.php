@@ -24,7 +24,7 @@ class Route {
    * Set the Route
    *
    * @param string $url
-   * @return PhilipBrown\WorldPay\Route
+   * @return Route
    */
   public static function set($url)
   {

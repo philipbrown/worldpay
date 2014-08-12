@@ -1,6 +1,5 @@
 <?php namespace PhilipBrown\WorldPay;
 
-use StdClass;
 use PhilipBrown\WorldPay\Money;
 use PhilipBrown\WorldPay\Route;
 use PhilipBrown\WorldPay\InstId;
@@ -60,13 +59,13 @@ class Request {
   /**
    * Create a new Request
    *
-   * @param PhilipBrown\WorldPay\Environment $environment
-   * @param PhilipBrown\WorldPay\InstId $instId
-   * @param PhilipBrown\WorldPay\CartId $cartId
-   * @param PhilipBrown\WorldPay\Secret $secret
-   * @param PhilipBrown\WorldPay\Money $amount
-   * @param PhilipBrown\WorldPay\Currency $currency
-   * @param PhilipBrown\WorldPay\Route $route
+   * @param Environment $environment
+   * @param InstId $instId
+   * @param CartId $cartId
+   * @param Secret $secret
+   * @param Money $amount
+   * @param Currency $currency
+   * @param Route $route
    * @param array $parameters
    * @return void
    */
@@ -95,7 +94,7 @@ class Request {
    * Set the signature fields to use in the signature hash
    *
    * @param array $fields
-   * @return PhilipBrown\WorldPay\Request
+   * @return Request
    */
   public function setSignatureFields(array $fields)
   {
@@ -107,7 +106,7 @@ class Request {
   /**
    * Send the request to WorldPay
    *
-   * @return Symfony\Component\HttpFoundation\RedirectResponse
+   * @return \Symfony\Component\HttpFoundation\RedirectResponse
    */
   public function send()
   {
@@ -121,7 +120,7 @@ class Request {
   /**
    * Return an object containing the request
    *
-   * @return StdClass
+   * @return Body
    */
   public function prepare()
   {

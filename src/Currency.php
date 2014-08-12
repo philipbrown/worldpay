@@ -33,7 +33,7 @@ class Currency {
    * Set the Currency
    *
    * @param string $name
-   * @return PhilipBrown\WorldPay\Currency
+   * @return Currency
    */
   public static function set($name)
   {

@@ -24,7 +24,7 @@ class CartId {
    * Set the CartId
    *
    * @param string $id
-   * @return PhilipBrown\WorldPay\CartId
+   * @return CartId
    */
   public static function set($id)
   {

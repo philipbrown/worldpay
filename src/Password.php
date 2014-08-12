@@ -24,7 +24,7 @@ class Password {
    * Set the Password
    *
    * @param string $password
-   * @return PhilipBrown\WorldPay\Password
+   * @return Password
    */
   public static function set($password)
   {

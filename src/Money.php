@@ -23,7 +23,7 @@ class Money {
    * Set the Money value
    *
    * @param string $value
-   * @return PhilipBrown\WorldPay\Money
+   * @return Money
    */
   public static function set($value)
   {

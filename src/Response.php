@@ -15,7 +15,7 @@ class Response {
   /**
    * Create a new Response instance
    *
-   * @param PhilipBrown\WorldPay\Password $password
+   * @param Password $password
    * @param array $body
    * @return void
    */

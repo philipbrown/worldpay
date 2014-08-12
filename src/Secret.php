@@ -24,7 +24,7 @@ class Secret {
    * Set the Secret
    *
    * @param string $secret
-   * @return PhilipBrown\WorldPay\Secret
+   * @return Secret
    */
   public static function set($secret)
   {

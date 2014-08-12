@@ -24,7 +24,7 @@ class InstId {
    * Set the InstId
    *
    * @param string $id
-   * @return PhilipBrown\WorldPay\InstId
+   * @return InstId
    */
   public static function set($id)
   {
