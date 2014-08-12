@@ -43,26 +43,23 @@ However, it is often the case that you need to have multiple environments beyond
 
 For example, you might want to have a `local` environment or a `test` environment that do not actually hit the WorldPay servers.
 
-If you send a WorldPay request in `production`, your request body must include a `testMode` parameter of `100`. In every other environment, this parameter must be set to `0`.
+If you send a WorldPay request in the `production` environment, your request body must include a `testMode` parameter of `100`. In every other environment, this parameter must be set to `0`.
 
 To set your environment:
 ```php
 use PhilipBrown\WorldPay\Environment;
 
 $env = Environment::set('production');
-$env->asString();   // 'production'
 $env->asInt();      // 100
 
 $env = Environment::set('development');
-$env->asString();   // 'development'
 $env->asInt();      // 0
 
 $env = Environment::set('local');
-$env->asString();   // 'local'
 $env->asInt();      // 0
 ```
 
-You must state where you want the request to be sent to by creating a new and passing it to the request.
+You must state where you want the request to be sent to by creating a new `Route` and passing it to the request.
 
 To set your route:
 ```php
@@ -154,7 +151,7 @@ $request = new Request(
 ### Setting the Signature Fields
 By default you will be required to include `instId`, `cartId`, `currency`, `amount` fields in your transaction signature hash.
 
-You add additional fields to the signature by passing an array of field names to the `setSignatureFields()` method:
+You can add additional fields to the signature by passing an array of field names to the `setSignatureFields()` method:
 ```php
 $request->setSignatureFields(['name']);
 ```
@@ -173,7 +170,7 @@ Secondly, you can prepare the request so you can display a confirmation page to 
 $body = $request->prepare();
 ```
 
-This will return an immuatable instance of `PhilipBrown\WorldPay\Body`.
+This will return an instance of `PhilipBrown\WorldPay\Body`, which is an immutable object.
 
 You can now create a confirmation page like the one below:
 ```html
@@ -197,7 +194,7 @@ WorldPay can optionally send you a payment response whenever a transaction occur
 
 WorldPay will include your callback password in the body of the response so that you can authenticate that the request is actually from WorldPay.
 
-To create a new response, instantiate a new instance of `Response` and pass it an instance of `Password` and the body of the `POST` request:
+To create a new response, instantiate a new instance of `Response`, pass it an instance of `Password` and the body of the `POST` request:
 ```php
 use PhilipBrown\WorldPay\Response;
 use PhilipBrown\WorldPay\Password;
