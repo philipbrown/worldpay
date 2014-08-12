@@ -12,37 +12,37 @@ use Symfony\Component\HttpFoundation\RedirectResponse;
 class Request {
 
   /**
-   * @var PhilipBrown\WorldPay\Environment
+   * @var Environment
    */
   private $environment;
 
   /**
-   * @var PhilipBrown\WorldPay\InstId
+   * @var InstId
    */
   private $instId;
 
   /**
-   * @var PhilipBrown\WorldPay\CartId
+   * @var CartId
    */
   private $cartId;
 
   /**
-   * @var PhilipBrown\WorldPay\Secret
+   * @var Secret
    */
   private $secret;
 
   /**
-   * @var PhilipBrown\WorldPay\Money
+   * @var Money
    */
   private $amount;
 
   /**
-   * @var PhilipBrown\WorldPay\Currency
+   * @var Currency
    */
   private $currency;
 
   /**
-   * @var PhilipBrown\WorldPay\Route
+   * @var Route
    */
   private $route;
 

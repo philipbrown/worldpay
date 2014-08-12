@@ -3,7 +3,7 @@
 class Response {
 
   /**
-   * @var PhilipBrown\WorldPay\Password
+   * @var Password
    */
   private $password;
 
