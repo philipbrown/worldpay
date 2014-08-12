@@ -1,6 +1,13 @@
 <?php namespace PhilipBrown\WorldPay;
 
 use StdClass;
+use PhilipBrown\WorldPay\Money;
+use PhilipBrown\WorldPay\Route;
+use PhilipBrown\WorldPay\InstId;
+use PhilipBrown\WorldPay\CartId;
+use PhilipBrown\WorldPay\Secret;
+use PhilipBrown\WorldPay\Currency;
+use PhilipBrown\WorldPay\Environment;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 
 class Request {
@@ -28,7 +35,7 @@ class Request {
   /**
    * @var PhilipBrown\WorldPay\Money
    */
-  private $money;
+  private $amount;
 
   /**
    * @var PhilipBrown\WorldPay\Currency
@@ -123,16 +130,6 @@ class Request {
       $this->generateSignature(),
       $this->getTheRequestParameters()
     );
-  }
-
-  /**
-   * Check to see if we are in a default environment
-   *
-   * @return bool
-   */
-  private function isDefaultEnvironment()
-  {
-    return in_array((string) $this->environment, ['production', 'development']);
   }
 
   /**
