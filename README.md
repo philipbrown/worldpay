@@ -50,13 +50,13 @@ To set your environment:
 use PhilipBrown\WorldPay\Environment;
 
 $env = Environment::set('production');
-$env->asInt();      // 100
+$env->asInt(); // 100
 
 $env = Environment::set('development');
-$env->asInt();      // 0
+$env->asInt(); // 0
 
 $env = Environment::set('local');
-$env->asInt();      // 0
+$env->asInt(); // 0
 ```
 
 You must state where you want the request to be sent to by creating a new `Route` and passing it to the request.
