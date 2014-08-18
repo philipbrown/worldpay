@@ -43,20 +43,20 @@ However, it is often the case that you need to have multiple environments beyond
 
 For example, you might want to have a `local` environment or a `test` environment that do not actually hit the WorldPay servers.
 
-If you send a WorldPay request in the `production` environment, your request body must include a `testMode` parameter of `100`. In every other environment, this parameter must be set to `0`.
+If you send a WorldPay request in the `production` environment, your request body must include a `testMode` parameter of `0`. In every other environment, this parameter must be set to `100`.
 
 To set your environment:
 ```php
 use PhilipBrown\WorldPay\Environment;
 
 $env = Environment::set('production');
-$env->asInt(); // 100
+$env->asInt(); // 0
 
 $env = Environment::set('development');
-$env->asInt(); // 0
+$env->asInt(); // 100
 
 $env = Environment::set('local');
-$env->asInt(); // 0
+$env->asInt(); // 100
 ```
 
 You must state where you want the request to be sent to by creating a new `Route` and passing it to the request.
