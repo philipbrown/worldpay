@@ -94,7 +94,7 @@ To set the currency:
 ```php
 use PhilipBrown\WorldPay\Currency;
 
-$currency = Currency::set('GB');
+$currency = Currency::set('GBP');
 ```
 
 ## Transaction Value
@@ -142,7 +142,7 @@ $request = new Request(
   CartId::set('My shop'),
   Secret::set('my secret'),
   Money::set(1000),
-  Currency::set('GB'),
+  Currency::set('GBP'),
   Route::set('http://shop.test/callbacks/worldpay')
   ['name' => 'Philip Brown']
 );

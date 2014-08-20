@@ -7,10 +7,10 @@ class CurrencyTest extends PHPUnit_Framework_TestCase {
   /** @test */
   public function should_set_new_currency()
   {
-    $currency = Currency::set('GB');
+    $currency = Currency::set('GBP');
 
     $this->assertInstanceOf('PhilipBrown\WorldPay\Currency', $currency);
-    $this->assertEquals('GB', (string) $currency);
+    $this->assertEquals('GBP', (string) $currency);
   }
 
   /** @test */

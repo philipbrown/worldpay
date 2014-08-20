@@ -44,7 +44,7 @@ class RequestTest extends PHPUnit_Framework_TestCase {
   {
     $prepared = $this->createTestingEnvironmentRequest()->prepare();
 
-    $this->assertEquals('7c98a959b30a6030b004cd6e845bcd87', $prepared->signature);
+    $this->assertEquals('5bbda02050842c0b488a4ed607451fde', $prepared->signature);
   }
 
   /** @test */
@@ -52,7 +52,7 @@ class RequestTest extends PHPUnit_Framework_TestCase {
   {
     $prepared = $this->createTestingEnvironmentRequest()->setSignatureFields(['name'])->prepare();
 
-    $this->assertEquals('c50acdc5cc08d4af7f3ba296763f924e', $prepared->signature);
+    $this->assertEquals('683655239570fb3b3d84a52409e9b996', $prepared->signature);
   }
 
   /** @test */
@@ -63,7 +63,7 @@ class RequestTest extends PHPUnit_Framework_TestCase {
     $expected = [
       'instId'    => '123',
       'cartId'    => 'My shop',
-      'currency'  => 'GB',
+      'currency'  => 'GBP',
       'amount'    => '10.00',
       'testMode'  => 100,
       'name'      => 'Philip Brown'
@@ -88,7 +88,7 @@ class RequestTest extends PHPUnit_Framework_TestCase {
       CartId::set('My shop'),
       Secret::set('my secret'),
       Money::set(1000),
-      Currency::set('GB'),
+      Currency::set('GBP'),
       Route::set('http://shop.test/callbacks/worldpay'),
       ['name' => 'Philip Brown']
     );
@@ -102,7 +102,7 @@ class RequestTest extends PHPUnit_Framework_TestCase {
       CartId::set('My shop'),
       Secret::set('my secret'),
       Money::set(1000),
-      Currency::set('GB'),
+      Currency::set('GBP'),
       Route::set('https://secure-test.worldpay.com/wcc/purchase'),
       []
     );
