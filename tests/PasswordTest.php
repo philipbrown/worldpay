@@ -1,8 +1,8 @@
-<?php
+<?php namespace PhilipBrown\WorldPay\Tests;
 
 use PhilipBrown\WorldPay\Password;
 
-class PasswordTest extends PHPUnit_Framework_TestCase
+class PasswordTest extends \PHPUnit_Framework_TestCase
 {
     /** @test */
     public function should_create_new_password()

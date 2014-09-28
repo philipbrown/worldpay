@@ -1,8 +1,8 @@
-<?php
+<?php namespace PhilipBrown\WorldPay\Tests;
 
 use PhilipBrown\WorldPay\Secret;
 
-class SecretTest extends PHPUnit_Framework_TestCase
+class SecretTest extends \PHPUnit_Framework_TestCase
 {
     /** @test */
     public function should_create_new_secret()

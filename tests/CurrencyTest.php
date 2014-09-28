@@ -1,8 +1,8 @@
-<?php
+<?php namespace PhilipBrown\WorldPay\Tests;
 
 use PhilipBrown\WorldPay\Currency;
 
-class CurrencyTest extends PHPUnit_Framework_TestCase
+class CurrencyTest extends \PHPUnit_Framework_TestCase
 {
     /** @test */
     public function should_set_new_currency()

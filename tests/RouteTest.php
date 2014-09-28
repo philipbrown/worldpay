@@ -1,8 +1,8 @@
-<?php
+<?php namespace PhilipBrown\WorldPay\Tests;
 
 use PhilipBrown\WorldPay\Route;
 
-class RouteTest extends PHPUnit_Framework_TestCase
+class RouteTest extends \PHPUnit_Framework_TestCase
 {
     /** @test */
     public function should_create_a_new_route()

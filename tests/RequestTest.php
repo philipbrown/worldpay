@@ -1,4 +1,4 @@
-<?php
+<?php namespace PhilipBrown\WorldPay\Tests;
 
 use PhilipBrown\WorldPay\Route;
 use PhilipBrown\WorldPay\Money;
@@ -9,7 +9,7 @@ use PhilipBrown\WorldPay\Request;
 use PhilipBrown\WorldPay\Currency;
 use PhilipBrown\WorldPay\Environment;
 
-class RequestTest extends PHPUnit_Framework_TestCase
+class RequestTest extends \PHPUnit_Framework_TestCase
 {
     /** @test */
     public function should_be_instance_of_request()

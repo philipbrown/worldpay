@@ -1,9 +1,9 @@
-<?php
+<?php namespace PhilipBrown\WorldPay\Tests;
 
 use PhilipBrown\WorldPay\Response;
 use PhilipBrown\WorldPay\Password;
 
-class ResponseTest extends PHPUnit_Framework_TestCase
+class ResponseTest extends \PHPUnit_Framework_TestCase
 {
     /** @test */
     public function should_create_a_new_response()

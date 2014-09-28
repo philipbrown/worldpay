@@ -1,8 +1,8 @@
-<?php
+<?php namespace PhilipBrown\WorldPay\Tests;
 
 use PhilipBrown\WorldPay\CartId;
 
-class CartIdTest extends PHPUnit_Framework_TestCase
+class CartIdTest extends \PHPUnit_Framework_TestCase
 {
     /** @test */
     public function should_create_new_cartid()

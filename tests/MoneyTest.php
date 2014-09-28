@@ -1,8 +1,8 @@
-<?php
+<?php namespace PhilipBrown\WorldPay\Tests;
 
 use PhilipBrown\WorldPay\Money;
 
-class MoneyTest extends PHPUnit_Framework_TestCase
+class MoneyTest extends \PHPUnit_Framework_TestCase
 {
     /** @test */
     public function should_set_money_value()

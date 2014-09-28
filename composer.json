@@ -14,6 +14,11 @@
             "PhilipBrown\\WorldPay\\": "src"
         }
     },
+    "autoload-dev": {
+        "psr-4": {
+            "PhilipBrown\\WorldPay\\Tests\\": "tests"
+        }
+    },
     "require": {
         "php": ">=5.4",
         "symfony/http-foundation": "~2.0",

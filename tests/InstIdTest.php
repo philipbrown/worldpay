@@ -1,8 +1,8 @@
-<?php
+<?php namespace PhilipBrown\WorldPay\Tests;
 
 use PhilipBrown\WorldPay\InstId;
 
-class InstIdTest extends PHPUnit_Framework_TestCase
+class InstIdTest extends \PHPUnit_Framework_TestCase
 {
     /** @test */
     public function should_create_new_instid()
