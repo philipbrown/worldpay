@@ -2,43 +2,44 @@
 
 use Assert\Assertion;
 
-class Secret {
+class Secret
+{
+    /**
+     * @var string
+     */
+    private $secret;
 
-  /**
-   * @var string
-   */
-  protected $secret;
+    /**
+     * Create a new Secret
+     *
+     * @param string $secret
+     * @return void
+     */
+    private function __construct($secret)
+    {
+        Assertion::string($secret);
 
-  /**
-   * @param string $secret
-   * @return void
-   */
-  private function __construct($secret)
-  {
-    Assertion::string($secret);
+        $this->secret = $secret;
+    }
 
-    $this->secret = $secret;
-  }
+    /**
+     * Set the Secret
+     *
+     * @param string $secret
+     * @return Secret
+     */
+    public static function set($secret)
+    {
+        return new Secret($secret);
+    }
 
-  /**
-   * Set the Secret
-   *
-   * @param string $secret
-   * @return Secret
-   */
-  public static function set($secret)
-  {
-    return new Secret($secret);
-  }
-
-  /**
-   * Return the Secret when cast to string
-   *
-   * @return string
-   */
-  public function __toString()
-  {
-    return $this->secret;
-  }
-
+    /**
+     * Return the Secret when cast to string
+     *
+     * @return string
+     */
+    public function __toString()
+    {
+        return $this->secret;
+    }
 }

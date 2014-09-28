@@ -2,52 +2,52 @@
 
 use Assert\Assertion;
 
-class Currency {
+class Currency
+{
+    /**
+     * @var string
+     */
+    private $name;
 
-  /**
-   * @var string
-   */
-  private $name;
+    /**
+     * @var array
+     */
+    private static $currencies;
 
-  /**
-   * @var array
-   */
-  private static $currencies;
-
-  /**
-   * @param string $name
-   */
-  private function __construct($name)
-  {
-    if ( ! isset(self::$currencies))
+    /**
+     * Create a new Currency
+     *
+     * @param string $name
+     */
+    private function __construct($name)
     {
-      self::$currencies = require __DIR__.'/currencies.php';
+        if ( ! isset(self::$currencies)) {
+            self::$currencies = require __DIR__.'/currencies.php';
+        }
+
+        Assertion::keyExists(self::$currencies, $name);
+
+        $this->name = $name;
     }
 
-    Assertion::keyExists(self::$currencies, $name);
+    /**
+     * Set the Currency
+     *
+     * @param string $name
+     * @return Currency
+     */
+    public static function set($name)
+    {
+        return new Currency($name);
+    }
 
-    $this->name = $name;
-  }
-
-  /**
-   * Set the Currency
-   *
-   * @param string $name
-   * @return Currency
-   */
-  public static function set($name)
-  {
-    return new Currency($name);
-  }
-
-  /**
-   * Return the Currency when cast to string
-   *
-   * @return string
-   */
-  public function __toString()
-  {
-    return $this->name;
-  }
-
+    /**
+     * Return the Currency when cast to string
+     *
+     * @return string
+     */
+    public function __toString()
+    {
+        return $this->name;
+    }
 }
