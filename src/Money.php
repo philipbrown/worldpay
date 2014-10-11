@@ -39,7 +39,7 @@ class Money
      */
     private function format()
     {
-        return number_format(($this->value / 100), 2);
+        return number_format(($this->value / 100), 2, '.', '');
     }
 
     /**
