@@ -1,10 +1,5 @@
 <?php namespace PhilipBrown\WorldPay;
 
-use PhilipBrown\WorldPay\Money;
-use PhilipBrown\WorldPay\Route;
-use PhilipBrown\WorldPay\InstId;
-use PhilipBrown\WorldPay\CartId;
-use PhilipBrown\WorldPay\Secret;
 use PhilipBrown\WorldPay\Currency;
 use PhilipBrown\WorldPay\Environment;
 use Symfony\Component\HttpFoundation\RedirectResponse;
@@ -17,22 +12,22 @@ class Request
     private $environment;
 
     /**
-     * @var InstId
+     * @var string
      */
     private $instId;
 
     /**
-     * @var CartId
+     * @var string
      */
     private $cartId;
 
     /**
-     * @var Secret
+     * @var string
      */
     private $secret;
 
     /**
-     * @var Money
+     * @var string
      */
     private $amount;
 
@@ -42,7 +37,7 @@ class Request
     private $currency;
 
     /**
-     * @var Route
+     * @var string
      */
     private $route;
 
@@ -60,25 +55,16 @@ class Request
      * Create a new Request
      *
      * @param Environment $environment
-     * @param InstId $instId
-     * @param CartId $cartId
-     * @param Secret $secret
-     * @param Money $amount
+     * @param string $instId
+     * @param string $cartId
+     * @param string $secret
+     * @param float $amount
      * @param Currency $currency
-     * @param Route $route
+     * @param string $route
      * @param array $parameters
      * @return void
      */
-    public function __construct(
-        Environment $environment,
-        InstId $instId,
-        CartId $cartId,
-        Secret $secret,
-        Money $amount,
-        Currency $currency,
-        Route $route,
-        array $parameters = []
-    )
+    public function __construct(Environment $environment, $instId, $cartId, $secret, $amount, Currency $currency, $route, array $parameters = [])
     {
         $this->environment = $environment;
         $this->instId      = $instId;
@@ -158,10 +144,10 @@ class Request
     private function getTheRequestParameters()
     {
         return array_merge([
-            'instId'    => (string) $this->instId,
-            'cartId'    => (string) $this->cartId,
+            'instId'    => $this->instId,
+            'cartId'    => $this->cartId,
             'currency'  => (string) $this->currency,
-            'amount'    => (string) $this->amount,
+            'amount'    => $this->amount,
             'testMode'  => $this->environment->asInt()
         ], $this->parameters);
     }

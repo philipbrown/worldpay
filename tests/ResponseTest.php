@@ -1,14 +1,13 @@
 <?php namespace PhilipBrown\WorldPay\Tests;
 
 use PhilipBrown\WorldPay\Response;
-use PhilipBrown\WorldPay\Password;
 
 class ResponseTest extends \PHPUnit_Framework_TestCase
 {
     /** @test */
     public function should_create_a_new_response()
     {
-        $response = new Response(Password::set(''), []);
+        $response = new Response('', []);
 
         $this->assertInstanceOf('PhilipBrown\WorldPay\Response', $response);
     }
@@ -16,7 +15,7 @@ class ResponseTest extends \PHPUnit_Framework_TestCase
     /** @test */
     public function should_have_access_to_response_attributes()
     {
-        $response = new Response(Password::set(''), ['name' => 'Philip Brown']);
+        $response = new Response('', ['name' => 'Philip Brown']);
 
         $this->assertEquals('Philip Brown', $response->name);
     }
@@ -24,7 +23,7 @@ class ResponseTest extends \PHPUnit_Framework_TestCase
     /** @test */
     public function should_be_valid_with_correct_password()
     {
-        $response = new Response(Password::set('qwerty'), ['callbackPW' => 'qwerty']);
+        $response = new Response('qwerty', ['callbackPW' => 'qwerty']);
 
         $this->assertTrue($response->isValid());
     }
@@ -32,7 +31,7 @@ class ResponseTest extends \PHPUnit_Framework_TestCase
     /** @test */
     public function should_be_invalid_with_incorrect_password()
     {
-        $response = new Response(Password::set('qwerty'), ['callbackPW' => 'dvorak']);
+        $response = new Response('qwerty', ['callbackPW' => 'dvorak']);
 
         $this->assertFalse($response->isValid());
     }
@@ -40,7 +39,7 @@ class ResponseTest extends \PHPUnit_Framework_TestCase
     /** @test */
     public function should_be_a_success()
     {
-        $response = new Response(Password::set(''), ['transStatus' => 'Y']);
+        $response = new Response('', ['transStatus' => 'Y']);
 
         $this->assertTrue($response->isSuccess());
     }
@@ -48,7 +47,7 @@ class ResponseTest extends \PHPUnit_Framework_TestCase
     /** @test */
     public function should_not_be_a_success()
     {
-        $response = new Response(Password::set(''), ['transStatus' => 'C']);
+        $response = new Response('', ['transStatus' => 'C']);
 
         $this->assertFalse($response->isSuccess());
     }
@@ -56,7 +55,7 @@ class ResponseTest extends \PHPUnit_Framework_TestCase
     /** @test */
     public function should_be_cancelled()
     {
-        $response = new Response(Password::set(''), ['transStatus' => 'C']);
+        $response = new Response('', ['transStatus' => 'C']);
 
         $this->assertTrue($response->isCancelled());
     }
@@ -64,7 +63,7 @@ class ResponseTest extends \PHPUnit_Framework_TestCase
     /** @test */
     public function should_not_be_cancelled()
     {
-        $response = new Response(Password::set(''), ['transStatus' => 'Y']);
+        $response = new Response('', ['transStatus' => 'Y']);
 
         $this->assertFalse($response->isCancelled());
     }
@@ -72,7 +71,7 @@ class ResponseTest extends \PHPUnit_Framework_TestCase
     /** @test */
     public function should_be_in_production()
     {
-        $response = new Response(Password::set(''), ['testMode' => '0']);
+        $response = new Response('', ['testMode' => '0']);
 
         $this->assertTrue($response->isProduction());
     }
@@ -80,7 +79,7 @@ class ResponseTest extends \PHPUnit_Framework_TestCase
     /** @test */
     public function should_not_be_in_production()
     {
-        $response = new Response(Password::set(''), ['testMode' => '100']);
+        $response = new Response('', ['testMode' => '100']);
 
         $this->assertFalse($response->isProduction());
     }
@@ -88,7 +87,7 @@ class ResponseTest extends \PHPUnit_Framework_TestCase
     /** @test */
     public function should_be_in_development()
     {
-        $response = new Response(Password::set(''), ['testMode' => '100']);
+        $response = new Response('', ['testMode' => '100']);
 
         $this->assertTrue($response->isDevelopment());
     }
@@ -96,7 +95,7 @@ class ResponseTest extends \PHPUnit_Framework_TestCase
     /** @test */
     public function should_not_be_in_development()
     {
-        $response = new Response(Password::set(''), ['testMode' => '0']);
+        $response = new Response('', ['testMode' => '0']);
 
         $this->assertFalse($response->isDevelopment());
     }
@@ -104,7 +103,7 @@ class ResponseTest extends \PHPUnit_Framework_TestCase
     /** @test */
     public function should_return_null_for_invalid_property()
     {
-        $response = new Response(Password::set(''), []);
+        $response = new Response('', []);
 
         $this->assertEquals(null, $response->nope);
     }

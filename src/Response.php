@@ -3,7 +3,7 @@
 class Response
 {
     /**
-     * @var Password
+     * @var string
      */
     private $password;
 
@@ -15,11 +15,11 @@ class Response
     /**
      * Create a new Response instance
      *
-     * @param Password $password
+     * @param string $password
      * @param array $body
      * @return void
      */
-    public function __construct(Password $password, array $body)
+    public function __construct($password, array $body)
     {
         $this->password = $password;
         $this->body     = $body;

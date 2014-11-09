@@ -1,10 +1,5 @@
 <?php namespace PhilipBrown\WorldPay\Tests;
 
-use PhilipBrown\WorldPay\Route;
-use PhilipBrown\WorldPay\Money;
-use PhilipBrown\WorldPay\InstId;
-use PhilipBrown\WorldPay\CartId;
-use PhilipBrown\WorldPay\Secret;
 use PhilipBrown\WorldPay\Request;
 use PhilipBrown\WorldPay\Currency;
 use PhilipBrown\WorldPay\Environment;
@@ -84,12 +79,12 @@ class RequestTest extends \PHPUnit_Framework_TestCase
     {
         return new Request(
             Environment::set('testing'),
-            InstId::set('123'),
-            CartId::set('My shop'),
-            Secret::set('my secret'),
-            Money::set(1000),
+            '123',
+            'My shop',
+            'my secret',
+            '10.00',
             Currency::set('GBP'),
-            Route::set('http://shop.test/callbacks/worldpay'),
+            'http://shop.test/callbacks/worldpay',
             ['name' => 'Philip Brown']
         );
     }
@@ -98,12 +93,12 @@ class RequestTest extends \PHPUnit_Framework_TestCase
     {
         return new Request(
             Environment::set('development'),
-            InstId::set('123'),
-            CartId::set('My shop'),
-            Secret::set('my secret'),
-            Money::set(1000),
+            '123',
+            'My shop',
+            'my secret',
+            '10.00',
             Currency::set('GBP'),
-            Route::set('https://secure-test.worldpay.com/wcc/purchase'),
+            'https://secure-test.worldpay.com/wcc/purchase',
             []
         );
     }
