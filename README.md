@@ -21,7 +21,7 @@ Add `philipbrown/worldpay` as a requirement to `composer.json`:
 ```json
 {
   "require": {
-    "philipbrown/worldpay": "~2.0"
+    "philipbrown/worldpay": "~3.0"
   }
 }
 ```
@@ -59,33 +59,12 @@ $env = Environment::set('local');
 $env->asInt(); // 100
 ```
 
-You must state where you want the request to be sent to by creating a new `Route` and passing it to the request.
-
-To set your route:
-```php
-use PhilipBrown\WorldPay\Route;
-
-$route = Route::set('http://shop.com/callbacks/worldpay');
-```
+You must state where you want the request to be sent to by creating a new route and passing it to the request.
 
 ## Installation and Cart Ids
 When you create a new installation in your WorldPay account, it will be automatically assigned an `instId`. When making a request to WorldPay you need to provide this id.
 
 WorldPay also allows you to set a `cartId` that will be attached to the request. This will make it easier to dertermine where transactions originate from.
-
-To set your `instId`:
-```php
-use PhilipBrown\WorldPay\InstId;
-
-$instId = InstId::set('1234');
-```
-
-To set your `cartId`:
-```php
-use PhilipBrown\WorldPay\CartId;
-
-$cartId = CartId::set('My Shop');
-```
 
 ## Currencies
 When you send a request to WorldPay you are required to include a string representation of the currency of the transaction. A list of these currencies can be found under `/src/currencies.php`.
@@ -98,14 +77,7 @@ $currency = Currency::set('GBP');
 ```
 
 ## Transaction Value
-A request should include the total value of the transaction as a single amount. This should be set as an integer value.
-
-To set the transaction value:
-```php
-use PhilipBrown\WorldPay\Money;
-
-$money = Money::set(1000);
-```
+A request should include the total value of the transaction as a single amount. This should be set as an string value.
 
 ## Transaction Secret
 To prevent unauthorised tampering of transaction requests, WorldPay allows you to set a secret key. This key is then used as part of the hashing of the transaction signature that you must send to WorldPay for each request.
@@ -114,37 +86,23 @@ To set a secret, go into your WorldPay Account and choose **Installations** from
 
 Next choose your installation and complete the field marked **MD5 secret for transactions**.
 
-To set the secret:
-```php
-use PhilipBrown\WorldPay\Secret;
-
-$secret = Secret::set('my secret...');
-```
-
 ## Callback Password
 After a transaction, WorldPay will (optionally) send a callback request to your server. This allows you to run any after-transaction processes you might have.
 
 In order to authenticate this request, WorldPay will include a callback password in the body of the request. You can set this password through your installation dashboard in your merchant account.
 
-To set the password:
-```php
-use PhilipBrown\WorldPay\Password;
-
-$password = Password::set('my password...');
-```
-
 ## Creating a Request
 To send a request to WorldPay, create a new instance of `PhilipBrown\WorldPay\Request`:
 ```php
 $request = new Request(
-  Environment::set('testing'),
-  InstId::set('123'),
-  CartId::set('My shop'),
-  Secret::set('my secret'),
-  Money::set(1000),
-  Currency::set('GBP'),
-  Route::set('http://shop.test/callbacks/worldpay')
-  ['name' => 'Philip Brown']
+  Environment::set('testing'),          // Environment
+  '123',                                // InstId
+  'My shop',                            // CartId
+  'my secret',                          // Secret
+  '10.00',                              // Value
+  Currency::set('GBP'),                 // Currency
+  http://shop.test/callbacks/worldpay', // Route
+  ['name' => 'Philip Brown']            // Data
 );
 ```
 
@@ -194,12 +152,11 @@ WorldPay can optionally send you a payment response whenever a transaction occur
 
 WorldPay will include your callback password in the body of the response so that you can authenticate that the request is actually from WorldPay.
 
-To create a new response, instantiate a new instance of `Response`, pass it an instance of `Password` and the body of the `POST` request:
+To create a new response, instantiate a new instance of `Response`, pass it your callback password and the body of the `POST` request:
 ```php
 use PhilipBrown\WorldPay\Response;
-use PhilipBrown\WorldPay\Password;
 
-$response = new Response(Password::set('qwerty'), $_POST);
+$response = new Response('qwerty', $_POST);
 ```
 
 The `Response` is an immutable object that gives you access to the body of the `POST` request:
